@@ -5,9 +5,9 @@ module.exports = function(router) {
     res.send('Signing in as a recruiter');
   });
   router.post('/signup', function(req, res) {
-    console.log('Signing up ', req.body.companyName);
-    res.send('my new signup')
+    Recruiter.signup(req, res);
   });
+  
   router.get('/allPostedJobs', function(req, res) {
     Recruiter.getAllJobs(req, res);
   });
