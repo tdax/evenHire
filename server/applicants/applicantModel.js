@@ -19,7 +19,7 @@ module.exports = {
       var query = "INSERT INTO applicants (first_name, last_name, username, password, anon_id, email, work_exp, education, city) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING id, anon_id";
       client.query(query, [req.body.firstName, req.body.lastName, req.body.username, req.body.password, 'need to make anon_id', req.body.email, req.body.workExp, req.body.education, req.body.city], function(err, result) {
         if(err) {
-          console.log(err);
+          console.log("error on applicant signup", err);
           return res.json(err);
         } else {
           client.end();
@@ -59,6 +59,10 @@ module.exports = {
       //need to create anon_id and change values
       var query = "INSERT INTO jobs_applicants (jobs_id, applicants_id) VALUES ($1, $2)";
       client.query(query, [req.body.jobs_id, req.body.applicants_id], function(err, result) {
+        if(err) {
+          console.log("error on submitApplication" , err.detail);
+          return res.json(err);
+        }
           return res.json(result.rowCount);
       });
     });
