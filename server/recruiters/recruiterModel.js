@@ -29,5 +29,25 @@ module.exports = {
         return res.json(results);
       });
     });
+  },
+
+  createRecruiterAccount: function(req, res) {
+
+    // check if user exists
+      //return error
+    // save info into database
+
+    pg.connect(connectStr, function(err,))
+
+    var found = false;
+
+    var query = client.query("SELECT username FROM recruiters WHERE username = " + recruiter.username + ";");
+
+    if(query) {
+      
+    }
+
+
+
   }
 };
