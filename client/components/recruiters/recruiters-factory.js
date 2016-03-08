@@ -10,8 +10,9 @@ angular.module('evenhire.recruiters.factory', [])
       })
       .then(function(data){
         console.log(data);
+        return data.data;
       }, function(err) {
-        console.log(err);
+        console.log("nopstradamous!", err);
       });
     };
 
