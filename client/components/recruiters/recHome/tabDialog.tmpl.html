@@ -1,0 +1,42 @@
+<div layout="row" layout-align="center center" class="dialog-contents">
+  <div flex="50">
+    <h2 class="md-headline">Recruiters Post a job</h2>
+    <md-content>
+      <form name="recJobPost">
+        <md-input-container>
+          <label>Title</label>
+          <input type="text" name="title" ng-model="newJob.title" required>
+        </md-input-container>
+        <md-input-container>
+          <label>location</label>
+          <input type="text" name="location" ng-model="newJob.location"  required>
+        </md-input-container>
+        <md-input-container>
+          <label>Description</label>
+          <input type="text" name="description" ng-model="newJob.description" required>
+        </md-input-container>
+        <md-input-container>
+          <label>Industry</label>
+          <input type="text" name="industry" ng-model="newJob.industry" required>
+        </md-input-container>
+        <md-input-container>
+          <label>career_level</label>
+          <input type="text" name="career_level" ng-model="newJob.career_level" required>
+        </md-input-container>
+        <md-input-container>
+          <label>job_type</label>
+          <input type="text" name="job_type" ng-model="newJob.job_type" required>
+        </md-input-container>
+        <md-input-container>
+          <label>experience</label>
+          <input type="text" name="experience" ng-model="newJob.experience" required>
+        </md-input-container>
+        <md-button class="md-raised md-primary" type="submit" ng-disabled="recJobPost.$invalid" ng-click="postJob(); closeDialog()">Submit</md-button>
+      </form>
+    </md-content>
+  </div>
+</md-content><br>
+<md-button ui-sref="allJobs" class="md-raised">Click here to view job postings</md-button>
+</div>
+
+
