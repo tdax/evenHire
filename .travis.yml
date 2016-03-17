@@ -23,4 +23,4 @@ addons:
     - g++-4.8
 env:
   CXX=g++-4.8
-  TRAVIS_SECURE_ENV_VARS="false"
+  TRAVIS_SECURE_ENV_VARS=true
