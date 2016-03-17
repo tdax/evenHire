@@ -1,9 +1,8 @@
 //Uses dotenv to get process.env variables
-require('dotenv').config();
 var connectStr = process.env.DATABASE_URL;
 //NOTE- travis unable to read process.env.DATABASE_URL, throws an error
 var Sequelize = require('sequelize');
-console.log('====================', process.env.MAILGUN_DOMAIN);
+console.log('====================', process.env.JWT_SECRET);
 
 var sequelize = new Sequelize(connectStr, {
   dialect: 'postgres',
