@@ -14,6 +14,8 @@ module.exports = function (config) {
             'node_modules/angular-aria/angular-aria.js',
             'node_modules/ng-dialog/js/ngDialog.min.js',
             'node_modules/angular-mocks/angular-mocks.js',
+            'node_modules/sinon-chai/lib/sinon-chai.js',
+            'node_modules/sinon/pkg/sinon.js',
 
             //client files with tests in each folder respectively
             'client/app.js',

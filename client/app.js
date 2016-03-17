@@ -18,7 +18,10 @@ angular.module('evenhire',[
   'ngAnimate'
   ])
 
-  .config(function($stateProvider, $urlRouterProvider, $httpProvider) {
+  .config(function($stateProvider, $urlRouterProvider, $httpProvider, $mdThemingProvider) {
+    $mdThemingProvider.theme('default')
+    // .backgroundPalette('grey');
+      // .dark();
     $urlRouterProvider.otherwise('/');
     $stateProvider
       .state('home', {

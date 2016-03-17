@@ -74,5 +74,4 @@ angular.module('evenhire.recruiters', [])
         $scope.closeDialog();
       });
   };
-
 }]);

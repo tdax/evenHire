@@ -1,44 +1,42 @@
 <!DOCTYPE HTML>
 <html ng-app="evenhire">
-<head>
-  <metacontent="text/html; charset=UTF-8" />
-  <title>EvenHire</title>
-  <link href="./dist/styles/all.min.css" rel="stylesheet">
-  <script src="./dist/libs.js"></script>
-  <script src="./dist/all.min.js"></script>
-</head>
-<body>
-
-  <md-toolbar>
-    <div layout="row" layout-sm="column" layout-align="space-around center" layout-padding>
-      <div flex="12">
-        <md-button ui-sref="home">Home</md-button>
+  <head>
+    <metacontent="text/html; charset=UTF-8" />
+    <title>EvenHire</title>
+    <link href="./dist/styles/all.min.css" rel="stylesheet">
+    <script src="./dist/libs.js"></script>
+    <script src="./dist/all.min.js"></script>
+  </head>
+  <body>
+    <md-toolbar>
+      <div layout="row" layout-sm="column" layout-align="space-around center" layout-padding>
+        <div flex="12">
+          <md-button ui-sref="home">Home</md-button>
+        </div>
+        <div flex="12">
+          <md-button ui-sref="appLogin">AppLogin</md-button>
+        </div>
+        <div flex="12">
+          <md-button ui-sref="appNewAcc">AppNewAcc</md-button>
+        </div>
+        <div flex="12">
+          <md-button ui-sref="recruiters">View Apps</md-button>
+        </div>
+        <div flex="12">
+          <md-button ui-sref="recLogin">RecLogin</md-button>
+        </div>
+        <div flex="12">
+          <md-button ui-sref="recNewAcc">RecNewAcc</md-button>
+        </div>
+        <div flex="12">
+          <md-button ui-sref="allJobs">View Jobs</md-button>
+        </div>
+        <div flex="12" ng-controller="AuthController">
+          <md-button ng-click="logOut()">Logout</md-button>
+          <md-button ng-click="getUser()">Get current user</md-button>
+        </div>
       </div>
-      <div flex="12">
-        <md-button ui-sref="appLogin">AppLogin</md-button>
-      </div>
-      <div flex="12">
-        <md-button ui-sref="appNewAcc">AppNewAcc</md-button>
-      </div>
-      <div flex="12">
-        <md-button ui-sref="recruiters">View Apps</md-button>
-      </div>
-      <div flex="12">
-        <md-button ui-sref="recLogin">RecLogin</md-button>
-      </div>
-      <div flex="12">
-        <md-button ui-sref="recNewAcc">RecNewAcc</md-button>
-      </div>
-      <div flex="12">
-        <md-button ui-sref="allJobs">View Jobs</md-button>
-      </div>
-      <div flex="12" ng-controller="AuthController">
-        <md-button ng-click="logOut()">Logout</md-button>
-        <md-button ng-click="getUser()">Get current user</md-button>
-      </div>
-    </div>
-  </md-toolbar>
-  <div ui-view></div>
-
-</body>
+    </md-toolbar>
+    <div ui-view layout-padding></div>
+  </body>
 </html>
