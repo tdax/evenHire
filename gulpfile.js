@@ -90,7 +90,10 @@ gulp.task('clientTest', function(done) {
 gulp.task('serverTest', function() {
   return gulp.src(['tests/**/*.js'], {read: false})
     .pipe(mocha({reporter: 'spec'}))
-    .on('error', util.log);
+    .on('error', util.log)
+    .once('end', function() {
+      process.exit();
+    });
 });
 
 //Watch for changes in client folder
