@@ -9,9 +9,10 @@ angular.module('evenhire.allJobs', [])
     $scope.jobTypes = Home.jobTypes;
     $scope.industries = Home.industries;
     //automatically hide the sidebar filter options
-    $scope.citiesDropdownShown = false;
-    $scope.jobTypeDropdownShown = false;
-    $scope.careerLevelDropdownShown = false;
+    $scope.citiesDropdownShown = true;
+    $scope.jobTypeDropdownShown = true;
+    $scope.careerLevelDropdownShown = true;
+    $scope.industryDropdownShown = true;
 
     //these will be populated wtih which boxes are checked in the sidebar filter
     $scope.jobTypeFilter = [];

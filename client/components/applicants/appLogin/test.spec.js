@@ -10,6 +10,7 @@ describe('AppLoginController', function() {
   var $state;
   var Applicant;
   var $controller;
+  var Auth;
 
   beforeEach(module('evenhire'));
   beforeEach(inject(function($injector) {
@@ -17,6 +18,7 @@ describe('AppLoginController', function() {
     httpBackend = $injector.get('$httpBackend');
     $state = $injector.get('$state');
     Applicant = $injector.get('Applicant');
+    Auth = $injector.get('Auth');
     $controller = $injector.get('$controller');
     $scope = $rootScope.$new();
 
@@ -24,7 +26,8 @@ describe('AppLoginController', function() {
       return $controller('AppLoginController', {
         $scope: $scope,
         $state: $state,
-        Applicant: Applicant
+        Applicant: Applicant,
+        Auth: Auth
       });
     };
     createController();
@@ -38,6 +41,11 @@ describe('AppLoginController', function() {
   describe('the logIn function', function () {
     it('should be defined', function() {
       expect($scope.logIn).to.exist;
+    });
+  });
+  describe('the forgot password function', function () {
+    it('should be defined', function() {
+      expect($scope.forgotPassword).to.exist;
     });
   });
 
