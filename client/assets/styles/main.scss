@@ -1,34 +1,46 @@
 body {
-  height: 100%;
-  width: 100%;
   font-family: 'Arial', 'sans-serif';
 }
 
-#linkedin {
-  width: 305px;
-  height: 40px;
-}
+//APPLICANT - VIEW ALL JOBS
 
 div.jobCard {
-  h4 {
-    margin: 2px 0px;
+  md-card {
+    md-card-title-text {
+      span.md-subhead {
+        line-height: 19px;
+        padding: 0px;
+
+        span.larger.ng-binding {
+          font-size: 16px;
+        }
+      }
+    }
+    md-card-content {
+      div {
+        h4 {
+          margin: 2px 0px;
+        }
+        p {
+          margin: 0 0 8px 0;
+        }
+      }
+    }
   }
-  p {
-    margin: 0 0 8px 0;
-  }
 }
 
-.ngdialog.ngdialog-theme-default .ngdialog-content {
-    width: 900px;
-}
-
-div.md-select-menu-container.md-active.md-clickable {
-  z-index: 99999;
-}
-
+// CONTINUED.. Sidebar styling
 #jobFilterColumn {
   div {
-    fieldset {
+    fieldset.standard {
+      border-style: solid;
+      border-width: 1px;
+      height: 100%;
+
+      legend {
+        color: #3F51B5;
+        cursor: pointer;
+      }
       div {
         div {
           md-checkbox {
@@ -39,4 +51,13 @@ div.md-select-menu-container.md-active.md-clickable {
       }
     }
   }
+}
+
+
+.ngdialog.ngdialog-theme-default .ngdialog-content {
+    width: 900px;
+}
+
+div.md-select-menu-container.md-active.md-clickable {
+  z-index: 99999;
 }

@@ -1,26 +1,29 @@
 language: node_js
 node_js:
-  - '0.1'
+  - '5.4'
 before_install:
   # - npm install -g npm
   - export CHROME_BIN=chromium-browser
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
-before_script:
-  - npm install -g gulp
-script: gulp clientTest
+script: gulp serverTest
 # node_modules/karma/bin/karma start karma.config.js --single-run
 notifications:
   email: false
 sudo: false
+services:
+  - postgresql
 cache:
   directories:
     - node_modules
-# addons:
-#   apt:
-#     sources:
-#     - ubuntu-toolchain-r-test
-#     packages:
-#     - g++-4.8
-# env:
-#   CXX=g++-4.8
+addons:
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    packages:
+    - g++-4.8
+env:
+  - CXX=g++-4.8
+  - TRAVIS_SECURE_ENV_VARS=true
+  matrix:
+    secure: Zciay1J7eaCx8Clmf/XrZFsX8wYXIGkMV3mTolG54+4hd5Tb6/+vbMaVChiE1HAoXVRSB+PK0mvFj8BaJjh2Z0eYJf8WZxz/uzhvL9om7fqZUtV8F8pPrezwSE45FSQSOnxd73OEEduh6kissD+iiq5cOFOrJxUgd5h7F/c8Frd4tbiQoTMBjMAIYIRoMYHsCACvHRoAEBwfjWv0ErHc+e6EGWPOXwhz5JhdK76+C+kiDvsKin9Awm4RO9DJ4HTDLCbFp+AF7p1Qkbh9YvOp8jtnuvl5vur6W+0T5P9wofLTGD6hSPiBuFM4nzfwMX3+SUCumwbqMHIcn1xkN5mbvnnVmkt8nMayYEDEPlKQn7vu8BRlLgIi8FXCV7kdyZdNr98Xbib2Aza0X1zu5ppUmBTeJbkpwdtCN+JHuzOXRRnIB2Os+r/wGBJnfGZcNJkEkx+U6SCZdJyGEI+/eVFOk7pxI/mvL40db9qWV6nI2SCt1Y8feapXepLge8qYmpSJ2bJXBW4IADhyMjd9dohK+oJROHpdp3awKgb3lGV0D22yF4/6eXVNEvUT5kjgJShHxU6HvWjZtD0ATHaqktZX/w08v/34TWS6ZGgOlZLlDokjBj0EG77RepWOypqD1bzsGAfvHkge8+7gtfrKYraXyifbKAO6+OG3HY+l1CGPCF8=

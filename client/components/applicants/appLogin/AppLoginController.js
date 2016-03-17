@@ -37,9 +37,6 @@ angular.module('evenhire.appLogin', [])
       })
     };
 
-
-
-
 }]);
 
 
