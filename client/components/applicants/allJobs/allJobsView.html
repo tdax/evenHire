@@ -1,15 +1,18 @@
 <div md-padding>
-  <md-content layout="row" layout-align="end">
-    <input flex=30 type="text" ng-model="searchText" placeholder="search" />
-  </md-content>
   <h2 class="md-headline">Job Postings</h2>
   <md-button class="md-raised" ng-click="showAppInfo()">Applicants! View your profile</md-button><br>
   <md-button ui-sref="recruiters" class="md-raised">Recruiters! Click here to see your posted jobs</md-button>
-  <div layout="row">
+  <div layout="row" flex>
+    <div flex="20"></div>
+    <md-input-container flex="80">
+      <input type="text" ng-model="searchText" placeholder="search" />
+    </md-input-container>
+  </div>
+  <div layout="row" layout-xs="column" flex>
     <div id="jobFilterColumn" layout="column" flex="20">
       <div layout="column">
         <fieldset class="standard">
-          <lengend ng-click="citiesDropdownShown=!citiesDropdownShown">Location</lengend>
+          <legend ng-click="citiesDropdownShown=!citiesDropdownShown">Location</legend>
           <div>
             <div ng-show="citiesDropdownShown" ng-repeat="city in cities" class="md-caption animate-repeat">
               <md-checkbox ng-checked="exists(city.shortName, cityFilter)" ng-click="toggle(city.shortName, cityFilter)" value="city.shortName">
@@ -21,7 +24,7 @@
       </div>
       <div layout="column">
         <fieldset class="standard">
-          <lengend ng-click="jobTypeDropdownShown=!jobTypeDropdownShown">Job Type</lengend>
+          <legend ng-click="jobTypeDropdownShown=!jobTypeDropdownShown">Job Type</legend>
           <div>
             <div ng-show="jobTypeDropdownShown" ng-repeat="type in jobTypes" class="md-caption">
               <md-checkbox ng-checked="exists(type, jobTypeFilter)" ng-click="toggle(type, jobTypeFilter)">
@@ -33,7 +36,7 @@
       </div>
       <div layout="column">
         <fieldset class="standard">
-          <lengend ng-click="careerLevelDropdownShown=!careerLevelDropdownShown">Career Level</lengend>
+          <legend ng-click="careerLevelDropdownShown=!careerLevelDropdownShown">Career Level</legend>
           <div>
             <div ng-show="careerLevelDropdownShown" ng-repeat="level in careerLevels" class="md-caption animate-repeat">
               <md-checkbox ng-checked="exists(level, levelFilter)" ng-click="toggle(level, levelFilter)">
@@ -45,7 +48,7 @@
       </div>
       <div layout="column">
         <fieldset class="standard">
-          <lengend ng-click="industryDropdownShown=!industryDropdownShown">Industry</lengend>
+          <legend ng-click="industryDropdownShown=!industryDropdownShown">Industry</legend>
           <div>
             <div ng-show="industryDropdownShown" ng-repeat="industry in industries" class="md-caption animate-repeat">
               <md-checkbox ng-checked="exists(industry, industryFilter)" ng-click="toggle(industry, industryFilter)">
@@ -56,25 +59,33 @@
         </fieldset>
       </div>
     </div>
-    <div id="jobPostings" flex="80">
-      <div flex-gt-xs="50" class="jobCard" ng-repeat="job in fetchedJobs | orderBy:'-createdAt' | filter:searchText | sidebar:jobTypeFilter | sidebar:cityFilter | sidebar:levelFilter">
+    <div id="jobPostings" flex>
+      <div flex class="jobCard" ng-repeat="job in fetchedJobs | orderBy:'-createdAt' | filter:searchText | sidebar:jobTypeFilter | sidebar:cityFilter | sidebar:levelFilter">
         <md-card>
           <md-card-title>
             <md-card-title-text>
-              <span class="md-headline">{{job.recruiter.name}} - {{job.title}}</span><br>
-              <span class="md-subhead">{{job.city}}, {{job.state}}</span>
+              <span class="md-headline">{{job.recruiter.name}} - {{job.title}}</span>
+              <span class="md-subhead"><span class="larger">{{job.city}}, {{job.state}}</span><br>{{job.createdAt | date:'MM/dd/yyyy'}}</span>
             </md-card-title-text>
           </md-card-title>
           <md-card-content>
-            <h4 class="md-title">Posted at: </h4><p>{{job.createdAt | date:'MM/dd/yyyy'}}</p>
-            <h4 class="md-title">Industry: </h4><p>{{job.industry}}</p>
-            <h4 class="md-title">Description: </h4><p>{{job.description}}</p>
-            <h4 class="md-title">Job Type: </h4><p>{{job.job_type}}</p>
-            <h4 class="md-title">Qualifications: </h4><p>{{job.qualifications}}</p>
-            <h4 class="md-title">Career Level: </h4><p>{{job.career_level}}</p>
+            <div layout="row" layout-xs="column" layout-align="space-between">
+              <div flex="20">
+                <h4>Industry: </h4><p>{{job.industry}}</p>
+              </div>
+              <div flex="20">
+                <h4>Job Type: </h4><p>{{job.job_type}}</p>
+              </div>
+              <div flex="20">
+                <h4>Career Level: </h4><p>{{job.career_level}}</p>
+              </div>
+            </div>
+            <h4>Description: </h4><p>{{job.description}}</p>
+            <h4>Qualifications: </h4><p>{{job.qualifications}}</p>
           </md-card-content>
           <md-card-actions layout="row" layout-align="end center">
-            <md-button class="md-raised" ng-click="submitApplication(job.id)">Apply for job id {{job.id}}</md-button>
+            <md-button ng-click="">View more</md-button>
+            <md-button ng-click="submitApplication(job.id)">Apply for job id {{job.id}}</md-button>
           </md-card-actions>
         </md-card>
       </md-content>
