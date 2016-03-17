@@ -41,7 +41,6 @@ angular.module('evenhire.allJobs', [])
           } else {
             $scope.thankYouName = factoryResponse.first_name;
             $scope.applicationThankYou();
-            // alert("Thanks for applying " + factoryResponse.first_name)
           }
       });
     };
@@ -78,7 +77,7 @@ angular.module('evenhire.allJobs', [])
       });
     };
 
-    $scope.a = function() {
+    $scope.onlyApplicantCanApply = function() {
       ngDialog.open({
         template: './components/applicants/allJobs/onlyApplicantCanApply.tmpl.html',
         controller: 'AllJobsController',
