@@ -1,6 +1,6 @@
 var expect = require('chai').expect;
 var request = require('supertest');
-var app = require('../index.js');
+var app = require('../../index.js');
 // var api = request('http://localhost:8000');
 var testApplicantToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6NDYsInVzZXJUeXBlIjoiQXBwbGljYW50In0.v_UCG-HE2hpbnYxpU89rYpyfBeihmxqqyC_o-qn4jq0";
 var testRecruiterToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6NDUsInVzZXJUeXBlIjoiUmVjcnVpdGVyIn0.OwrYjvJM16fuRqRFX4i7YoYIvCmvzpRlWU8Db01a7y8";
