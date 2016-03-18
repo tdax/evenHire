@@ -25,7 +25,7 @@ var libraries = [
 var stylesheets = [
   './node_modules/ng-dialog/css/ngDialog.min.css',
   './node_modules/ng-dialog/css/ngDialog-theme-default.min.css',
-  './node_modules/angular-material/angular-material.min.css',
+  './node_modules/angular-material/angular-material.css',
   './client/dist/styles/main.css'
 ];
 
@@ -63,15 +63,16 @@ gulp.task('scripts', function() {
 });
 
 //Compile Sass into CSS
-gulp.task('scss', function() {
+gulp.task('scss', function(cb) {
   return gulp.src('./client/assets/styles/*.scss')
     .pipe(sass())
     .pipe(rename('./main.css'))
     .pipe(gulp.dest('./client/dist/styles/'));
+  cb(err);
 });
 
 //Compile and minify Styles
-gulp.task('minStyles', function() {
+gulp.task('minStyles', ['scss'], function() {
   return gulp.src(stylesheets)
     .pipe(concatCss('./all.min.css'))
     .pipe(cssmin())

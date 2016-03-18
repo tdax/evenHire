@@ -69,7 +69,7 @@ angular.module('evenhire.recruiters', [])
   $scope.sendEmail = function() {
     Recruiter.sendEmail($scope.applicantToContact, $scope.jobToContactAbout, $scope.companyName, $scope.companyEmail, $scope.contactMessage)
       .then(function(response) {
-        alert(response.message);
+        console.log(response);
         $scope.closeDialog();
       });
   };

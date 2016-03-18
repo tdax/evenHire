@@ -1,5 +1,3 @@
-//Uses dotenv to get process.env variables
-require('dotenv').config();
 var mailgun = require('mailgun-js')({apiKey: process.env.MAILGUNAPI_KEY, domain: process.env.MAILGUN_DOMAIN});
 
 //Require our database instance with its models
@@ -19,7 +17,6 @@ module.exports = {
         // var job = results[0]
           results[i].countApplicants()
             .then(function(count) {
-              console.log(count);
               applicantCount.push(count);
               if (applicantCount.length === results.length) {
                 return res.send({'results': results, 'applicantCount': applicantCount});
@@ -145,8 +142,10 @@ module.exports = {
       subject: req.body.jobTitle + ' position for ' + req.body.company,
       text: req.body.message
     };
+    console.log('email we want to send is: ', email);
+    console.log('testing to see if our process.env.mailgundomain works: ', process.env.MAILGUN_DOMAIN);
     mailgun.messages().send(email, function(error, body) {
-      console.log(body);
+      console.log('resonse from mail gun is, ', body);
       res.send(body);
     });
   },
