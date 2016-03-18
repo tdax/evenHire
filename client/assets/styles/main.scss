@@ -1,3 +1,6 @@
+$smallSubtext: rgb(140, 140, 140);
+$legendTitle: #3F51B5;
+
 body {
   font-family: 'Arial', 'sans-serif';
 }
@@ -38,7 +41,7 @@ div.jobCard {
       height: 100%;
 
       legend {
-        color: #3F51B5;
+        color: $legendTitle;
         cursor: pointer;
       }
       div {
@@ -53,11 +56,31 @@ div.jobCard {
   }
 }
 
-
 .ngdialog.ngdialog-theme-default .ngdialog-content {
     width: 900px;
 }
 
 div.md-select-menu-container.md-active.md-clickable {
   z-index: 99999;
+}
+
+// AUTH SIGN IN WITH USERNAME AND PASSWORDS
+div.authForm {
+  md-input-container {
+    margin: 0px;
+  }
+  div {
+    div {
+      span.subtext {
+        color: $smallSubtext;
+      }
+    }
+  }
+}
+
+// AUTH CREATE AN ACCOUNT AS APPLICANT
+form.signupForm {
+    md-input-container {
+      margin: 0px;
+    }
 }

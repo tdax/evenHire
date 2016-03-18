@@ -1,52 +1,62 @@
 <div layout="row" layout-align="center center">
-  <div flex="50">
-    <h2 class="md-headline">Applicants, create an account</h2>
-    <md-content id="appNewAccountForm">
-    <form name="appNewAccountForm">
+  <div flex="50" layout="column">
+    <h2 class="md-headline">Create your applicant profile</h2>
+    <form name="appNewAccountForm" class="signupForm" id="appNewAccountForm">
       <md-content layout="row">
-        <md-input-container flex=50>
+        <md-input-container flex="50">
           <label>First Name</label>
           <input type="text" name="firstName" ng-model="applicant.firstName" required>
         </md-input-container>
-        <md-input-container flex=50>
+        <md-input-container flex="50">
           <label>Last Name</label>
           <input type="text" name="lastName" ng-model="applicant.lastName" required>
         </md-input-container>
       </md-content>
-      <md-input-container>
-        <label>Email</label>
-        <input type="email" name="email" ng-model="applicant.email" required>
-      </md-input-container>
-      <md-input-container>
-        <label>Username</label>
-        <input type="text" name="username" ng-model="applicant.username" required>
-      </md-input-container>
-      <md-input-container>
-        <label>Password</label>
-        <input type="password" name="password" ng-model="applicant.password"  required>
-      </md-input-container>
-      <md-input-container>
-        <label>Verify Password</label>
-        <input type="password" name="verify_password" ng-model="applicant.verify_password"  required>
-      </md-input-container>
-      <md-input-container>
-        <label>City</label>
-        <input type="text" name="city" ng-model="applicant.city" required></input>
-      </md-input-container>
-      <md-input-container>
-        <label>Education</label>
-        <input type="text" name="education" ng-model="applicant.education" required></input>
-      </md-input-container>
-      <md-input-container>
-        <label>Work Experience</label>
-        <textarea rows="2" name="workExp" ng-model="applicant.workExp" required></textarea>
-      </md-input-container>
-      <md-input-container>
-        <label>Resume</label>
-        <textarea rows="3" type="text" name="resume" ng-model="applicant.resume" required></textarea>
-      </md-input-container>
-      <md-button class="md-raised md-primary" type="submit" ng-disabled="appNewAccountForm.$invalid" ng-click="createAccount()">Sign Up</md-button>
-      </form>
-    </md-content>
+      <div layout="row" flex>
+        <md-input-container flex="50">
+          <label>Email</label>
+          <input type="email" name="email" ng-model="applicant.email" required>
+        </md-input-container>
+        <md-input-container flex="50">
+          <label>City</label>
+          <input type="text" name="city" ng-model="applicant.city" required></input>
+        </md-input-container>
+ <!--        <md-input-container>
+          <label>State</label>
+          <input type="text" name="state" ng-model="applicant.state" required></input>
+        </md-input-container> -->
+      </div>
+      <div layout="row" layout-xs="column" flex layout-align="space-between">
+        <md-input-container flex>
+          <label>Username</label>
+          <input type="text" name="username" ng-model="applicant.username" required>
+        </md-input-container>
+        <md-input-container flex>
+          <label>Password</label>
+          <input type="password" name="password" ng-model="applicant.password"  required>
+        </md-input-container>
+        <md-input-container flex>
+          <label>Verify Password</label>
+          <input type="password" name="verify_password" ng-model="applicant.verify_password"  required>
+        </md-input-container>
+      </div>
+      <div flex layout="column">
+        <md-input-container flex>
+          <label>Education</label>
+          <textarea rows="3" name="education" ng-model="applicant.education" required></textare>
+        </md-input-container>
+        <md-input-container flex>
+          <label>Work Experience</label>
+          <textarea rows="3" name="workExp" ng-model="applicant.workExp" required></textarea>
+        </md-input-container>
+        <md-input-container flex>
+          <label>Resume</label>
+          <textarea rows="10" type="text" name="resume" ng-model="applicant.resume" required></textarea>
+        </md-input-container>
+      </div>
+      <div flex layout="row" layout-align="end start">
+        <md-button class="md-raised md-primary" type="submit" ng-disabled="appNewAccountForm.$invalid" ng-click="createAccount()">Sign Up</md-button>
+      </div>
+    </form>
   </div>
 </div>
