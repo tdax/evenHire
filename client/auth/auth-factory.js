@@ -108,12 +108,13 @@ angular.module('evenhire.auth.factory', [])
           data: userData
         })
         .then(function(data) {
+          console.log('response from server is, ', data);
           if (data.data.type) {
             auth.setUser(data.data.data, userType);
           }
           return data.data;
         }, function(response) {
-          console.log(response)
+          console.log('response from data on error is, ', response)
         });
       }
 

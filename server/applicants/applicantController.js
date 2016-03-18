@@ -1,7 +1,7 @@
 var db = require('../db/db').db;
 var Models = require('../db/models')(db);
 var authUtils = require('../auth/utils');
-var mailgun = require('mailgun-js')({apiKey: process.env.MAILGUNAPI_KEY, domain: process.env.MAILGUN_DOMAIN});
+var mailgun = require('mailgun-js')({apiKey: process.env.MAILGUN_API_KEY, domain: process.env.MAILGUN_DOMAIN});
 
 module.exports = {
   getAllApplicants: function(req, res) {
@@ -155,8 +155,9 @@ module.exports = {
       html: 'Dear ' + applicant.first_name + ',<br><br>We are sending this email because we received a request from you to change your password. If you did not make this request, please ignore this email. To change your password, click the link below.<br><br><a href="evenhire.herokuapp.com/api/auth/resetPassword/' + applicant.password + '">Update Password</a><br/><br>Once you change your password,  be sure to keep it secure. Never reveal your password to anyone, and never respond to an email asking for your password information.<br><br><br>The Even Hire Team'
     };
     mailgun.messages().send(email, function(error, body) {
-      console.log(body);
-      res.send(body);
+      console.log('error in applicantcontroller sending email is, ', error);
+      console.log('the body response is', body);
+      res.send({error: error, body: body});
     });
     })
   }
