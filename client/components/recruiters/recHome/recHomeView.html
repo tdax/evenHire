@@ -37,7 +37,7 @@
     </div>
       <div flex="60">
       <h3 class="md-title">Select a job to view applicants</h3>
-        <md-card class="md-padding" ng-repeat="applicant in applicantsToView">
+        <md-card class="{{applicant.jobs_applicants.isInterested}} " ng-repeat="applicant in applicantsToView">
           <md-card-content>
             <div layout="row" layout-align="space-between">
               <div flex="20">

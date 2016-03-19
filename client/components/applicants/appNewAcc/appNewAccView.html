@@ -15,7 +15,7 @@
       <div layout="row" flex>
         <md-input-container flex="45">
           <label>Email</label>
-          <input type="email" name="email" ng-model="applicant.email" required>
+          <input required type="email" name="email" ng-model="applicant.email" ng-pattern="/^.+@.+\..+$/">
         </md-input-container>
         <md-input-container flex="40">
           <label>City</label>

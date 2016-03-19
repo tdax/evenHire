@@ -45,10 +45,8 @@ module.exports = {
   getApplicants: function(req, res) {
     Models.Job.findById(req.body.jobId)
       .then(function(job) {
-        job.getApplicants()
+        job.getApplicants({joinTableAttributes: ['isInterested']})
           .then(function(applicants) {
-            // console.log(work.indexOf('\n'));
-            // console.log('applicants is array',typeof work);
             res.send(applicants);
           })
           .catch(function(err) {

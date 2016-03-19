@@ -45,6 +45,7 @@ angular.module('evenhire.recruiters', [])
       .then(function(data) {
         $scope.applicantsToView = data;
         $scope.currentJob = jobObj;
+        console.log(data);
       }, function() {
         $scope.error = 'Unable to get applicants';
       });

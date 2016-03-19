@@ -57,6 +57,12 @@ div {
       }
     }
   }
+  md-card.true {
+    background-color: green;
+  }
+  md-card.false {
+    background-color: red;
+  }
 }
 
 // CONTINUED.. Sidebar styling
