@@ -1,6 +1,6 @@
 angular.module('evenhire.applicants.factory', [])
 
-  .factory('Applicant',['$http', '$window', '$state', 'Auth', function ($http, $window, $state, Auth) {
+  .factory('Applicant',['$http', '$window', '$state', 'Auth', function($http, $window, $state, Auth) {
     var applicant = {};
 
     applicant.allJobs = function() {

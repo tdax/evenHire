@@ -1,29 +1,62 @@
-<md-content>
+<div class="md-padding">
   <h2 class="md-headline">Welcome {{companyName}}!</h2>
-  <md-button class="md-raised" ng-click="clickToOpen()">Click here to post a job</md-button>
-  <h3 class="md-title">Here are your job listings:</h3>
-  <md-card class="md-padding" ng-repeat="job in postedJobs.results">
-    <md-card-title class="md-headline">{{job.title}} - {{postedJobs.applicantCount[$index]}} applicants</md-card-title>
-    <md-card-content>
-      Location: {{job.location}}<br>
-      Industry: {{job.industry}}<br>
-      Description: {{job.description}}<br>
-      Career Level: {{job.career_level}}<br>
-      Job Type: {{job.job_type}}<br>
-      Posted on: {{job.createdAt | date:'MM/dd/yyyy'}}<br>
-      <br>
-    </md-card-content>
-    <md-button class="md-raised" ng-click="getApplicants(job.id)">Show all applicants for this job</md-button>
-    <div ng-repeat="applicant in JobApplicant[job.id]">
-      <br>
-      ID Number: {{applicant.id}}<br>
-      City: {{applicant.city}}<br>
-      Work Experience: {{applicant.work_exp}}<br>
-      Education: {{applicant.education}}<br>
-      Resume: {{applicant.resume}}<br>
-      Email: {{applicant.email}}<br>
-      <br>
-      <md-button class="md-raised" ng-click="clickToOpenContact($index, $parent.$index)">Contact</md-button>
+  {{message}}
+  <md-button class="md-raised" ng-click="newJobModal()">Click here to post a job</md-button>
+  <div flex layout="row">
+    <div flex="40">
+    <h3 class="md-title">Job listings:</h3>
+      <md-card class="md-padding" ng-repeat="job in postedJobs.results">
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">{{job.title}} - {{postedJobs.applicantCount[$index]}} Applicants</span>
+            <span class="md-subhead">{{job.createdAt | date:'MM/dd/yyyy'}}<br>{{job.city}}, {{job.state}}</span>
+          </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
+          <div layout="row" layout-align="space-between">
+            <div flex="20">
+              <h4>Industry: </h4><p>{{job.industry}}</p>
+            </div>
+            <div flex="25">
+              <h4>Career Level: </h4><p>{{job.career_level}}</p>
+            </div>
+            <div flex="20">
+              <h4>Job Type: </h4><p>{{job.job_type}}</p>
+            </div>
+          </div>
+          <div ng-show="showJobDetails">
+            <h4>Description: </h4><p class="prewrap">{{job.description}}</p><br>
+            <h4>Qualifications: </h4><p class="prewrap">{{job.qualifications}}</p>
+          </div>
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button ng-click="showJobDetails=!showJobDetails">View more</md-button>
+          <md-button ng-click="getApplicants(job.id, job)">Show applicants</md-button>
+        </md-card-actions>
+      </md-card>
     </div>
-  </md-card>
+      <div flex="60">
+      <h3 class="md-title">Select a job to view applicants</h3>
+        <md-card class="md-padding" ng-repeat="applicant in applicantsToView">
+          <md-card-content>
+            <div layout="row" layout-align="space-between">
+              <div flex="20">
+                <h4>ID Number: </h4><p>{{applicant.id}}</p><br>
+              </div>
+              <div flex="20">
+                <h4>City: </h4><p>{{applicant.city}}, {{applicant.state}}</p><br>
+              </div>
+            </div>
+            <h4>Education: </h4><p class="prewrap">{{applicant.education}}</p>
+<!--             <div>
+              <h4>Work Experience: </h4>{{applicant.work_exp}}<br>
+              <h4>Resume: </h4>{{applicant.resume}}<br>
+            </div> -->
+          </md-card-content>
+          <md-card-actions layout="row" layout-align="end center">
+            <md-button class="md-raised" ng-click="contactApplicantModal($index)">Contact</md-button>
+          </md-card-actions>
+        </div>
+      </div>
+    </div>
 </div>

@@ -91,6 +91,7 @@ module.exports = function(db) {
   });
 
   var JobApplicant = db.define('jobs_applicants', {
+    isInterested: {type: Sequelize.BOOLEAN, defaultValue: null}
   });
 
   //set up one to many relationship

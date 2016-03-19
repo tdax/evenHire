@@ -46,12 +46,7 @@ gulp.task('libs', function() {
   return gulp.src(libraries)
     .pipe(concat('./libs.js'))
     .pipe(gulp.dest('./client/dist/'));
-  })
-
-//Start node server with nodemon
-gulp.task('serve', function() {
-  nodemon({script: 'index.js', ignore: 'node_modules/**/*.js'});
-});
+  });
 
 //Concatenante and minify JS
 gulp.task('scripts', function() {
@@ -104,14 +99,19 @@ gulp.task('serverTest', function() {
     });
 });
 
+//Start node server with nodemon
+gulp.task('serve', ['build'], function() {
+  nodemon({script: 'index.js', ignore: 'node_modules/**/*.js'});
+});
+
 //Watch for changes in client folder
-gulp.task('watch', function() {
+gulp.task('watch', ['build'], function() {
   gulp.watch(['./client/**/*.js', '!./client/dist/**/*.js'], ['scripts']);
   gulp.watch('./client/**/*.scss', ['styles']);
 });
 
 gulp.task('styles', ['scss', 'minStyles']);
-gulp.task('build', ['styles', 'scripts', 'libs']);
+gulp.task('build', ['styles', 'libs', 'scripts']);
 gulp.task('tests', ['serverTest', 'clientTest']);
 gulp.task('start', ['build', 'serve', 'watch']);
 gulp.task('default', ['build', 'serve', 'watch']);

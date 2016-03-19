@@ -1,6 +1,6 @@
 angular.module('evenhire.auth.factory', [])
 
-  .factory('Auth', ['$window', '$http', function ($window, $http) {
+  .factory('Auth', ['$window', '$http', function($window, $http) {
     var currentUser = null;
     var currentUserType = null;
 

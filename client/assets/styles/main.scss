@@ -5,9 +5,36 @@ body {
   font-family: 'Arial', 'sans-serif';
 }
 
-//APPLICANT - VIEW ALL JOBS
+.prewrap {
+  white-space: pre-wrap;
+}
 
-div.jobCard {
+// NG DIALOG
+.ngdialog.ngdialog-theme-default .ngdialog-content {
+    width: 1200px;
+    div {
+      md-content {
+        md-tabs {
+          md-tab-content {
+            span.subtitle {
+              font-weight: 600;
+            }
+            div.headerId {
+              text-align: center;
+            }
+          }
+        }
+      }
+    }
+}
+
+div.md-select-menu-container.md-active.md-clickable {
+  z-index: 99999;
+}
+
+//JOB CARDS (IN VIEW ALL JOBS AND RECRUITER HOME)
+
+div {
   md-card {
     md-card-title-text {
       span.md-subhead {
@@ -54,14 +81,6 @@ div.jobCard {
       }
     }
   }
-}
-
-.ngdialog.ngdialog-theme-default .ngdialog-content {
-    width: 900px;
-}
-
-div.md-select-menu-container.md-active.md-clickable {
-  z-index: 99999;
 }
 
 // AUTH SIGN IN WITH USERNAME AND PASSWORDS

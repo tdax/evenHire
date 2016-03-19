@@ -13,18 +13,22 @@
         </md-input-container>
       </md-content>
       <div layout="row" flex>
-        <md-input-container flex="50">
+        <md-input-container flex="45">
           <label>Email</label>
           <input type="email" name="email" ng-model="applicant.email" required>
         </md-input-container>
-        <md-input-container flex="50">
+        <md-input-container flex="40">
           <label>City</label>
           <input type="text" name="city" ng-model="applicant.city" required></input>
         </md-input-container>
- <!--        <md-input-container>
+        <md-input-container flex="15">
           <label>State</label>
-          <input type="text" name="state" ng-model="applicant.state" required></input>
-        </md-input-container> -->
+            <md-select ng-model="applicant.state" flex>
+              <md-option ng-repeat="state in states" value="{{state.abbrev}}">
+                {{state.abbrev}}
+              </md-option>
+            </md-select>
+        </md-input-container>
       </div>
       <div layout="row" layout-xs="column" flex layout-align="space-between">
         <md-input-container flex>
@@ -32,26 +36,30 @@
           <input type="text" name="username" ng-model="applicant.username" required>
         </md-input-container>
         <md-input-container flex>
-          <label>Password</label>
-          <input type="password" name="password" ng-model="applicant.password"  required>
+          <label for="newPassword">Password</label>
+          <input type="password" name="newPassword" ng-model="password.new" ng-model-options="{ updateOn: 'blur' }" required minlength="8">
+          <span ng-show="appNewAccountForm.newPassword.$dirty && appNewAccountForm.newPassword.$invalid">Password must be 8 characters or longer.
+          </span>
         </md-input-container>
         <md-input-container flex>
-          <label>Verify Password</label>
-          <input type="password" name="verify_password" ng-model="applicant.verify_password"  required>
+          <label for="newPasswordConfirm">Verify Password</label>
+          <input type="password" name="newPasswordConfirm" ng-model="password.confirm" ng-model-options="{ updateOn: 'blur' }" value-matches="password.new" required/>
+          <span ng-show="appNewAccountForm.newPasswordConfirm.$dirty && appNewAccountForm.newPasswordConfirm.$invalid">Passwords must match.
+          </span>
         </md-input-container>
       </div>
       <div flex layout="column">
         <md-input-container flex>
           <label>Education</label>
-          <textarea rows="3" name="education" ng-model="applicant.education" required></textare>
+          <textarea ng-model="applicant.education" required></textarea>
         </md-input-container>
         <md-input-container flex>
           <label>Work Experience</label>
-          <textarea rows="3" name="workExp" ng-model="applicant.workExp" required></textarea>
+          <textarea ng-model="applicant.workExp" required></textarea>
         </md-input-container>
         <md-input-container flex>
           <label>Resume</label>
-          <textarea rows="10" type="text" name="resume" ng-model="applicant.resume" required></textarea>
+          <textarea rows="10" type="text" ng-model="applicant.resume" required></textarea>
         </md-input-container>
       </div>
       <div flex layout="row" layout-align="end start">

@@ -1,13 +1,44 @@
-<div layout-align="center center" class="dialog-contents">
-  <div>
-    <h2 class="md-headline">Send an email</h2>
-    <md-content>
-      <md-input-container>
-        <label>Message</label>
-        <input type="text" name="message" ng-model="contactMessage">
-      </md-input-container>
-      <md-button class="md-raised md-primary" type="submit" ng-click="sendEmail()">Submit</md-button>
-    </md-content>
+<div>
+  <md-content>
+    <md-tabs class="md-dynamic-height md-border-bottom">
+      <md-tab label="Resume">
+        <md-content class="md-padding" flex layout="column">
+          <div flex layout="row" layout-align="space-between">
+            <div flex="20">
+              <span><span class="subtitle">City: </span>{{interestedApplicant.city}}, {{interestedApplicant.state}}</span>
+            </div>
+            <div flex="10" class="headerId">
+              <span><strong>ID: </strong>{{interestedApplicant.id}}<span>
+            </div>
+          </div>
+            <div>
+              <h4>Education: </h4><p>{{interestedApplicant.education}}</p>
+            </div>
+          <div>
+            <h4>Work Experience: </h4><p class="prewrap">{{interestedApplicant.work_exp}}</p><br>
+            <h4>Resume: </h4><p class="prewrap">{{interestedApplicant.resume}}</p>
+          </div>
+        </md-content>
+      </md-tab>
+      <md-tab label="Contact">
+        <md-content class="md-padding">
+          <h2 class="md-headline">Send an email</h2>
+          <div layout="column">
+            <md-input-container>
+              <label>Message</label>
+              <textarea name="message" ng-model="contactMessage"></textarea>
+            </md-input-container>
+            <div layout="row" layout-align="start start">
+              <md-button class="md-raised md-primary" type="submit" ng-click="sendEmail()">Submit</md-button>
+            </div>
+          </div>
+        </md-content>
+      </md-tab>
+    </md-tabs>
+  </md-content>
+  <div layout="row" layout-align="end center">
+    <md-button class="md-raised md-primary" type="submit" ng-click="isNotInterested(interestedApplicant.id)">Not Interested</md-button>
+    <md-button class="md-raised md-primary" type="submit" ng-click="isInterested(interestedApplicant.id)">Interested</md-button>
   </div>
 </div>
 

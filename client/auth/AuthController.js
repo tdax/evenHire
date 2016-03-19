@@ -1,7 +1,7 @@
 //Controller for authentication, used in header
 angular.module('evenhire.auth', [])
 
-  .controller('AuthController', ['$scope','$state', 'Auth', function ($scope, $state, Auth) {
+  .controller('AuthController', ['$scope','$state', 'Auth', function($scope, $state, Auth) {
     Auth.fetchUserFromJwt();
     $scope.logOut = function() {
       Auth.signOut();

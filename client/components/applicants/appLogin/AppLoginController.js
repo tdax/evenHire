@@ -1,6 +1,6 @@
 angular.module('evenhire.appLogin', [])
 
-  .controller('AppLoginController', ['$scope', '$state', '$http', 'Applicant', '$window', 'Auth','ngDialog', function ($scope, $state, $http, Applicant, $window, Auth, ngDialog) {
+  .controller('AppLoginController', ['$scope', '$state', '$http', 'Applicant', '$window', 'Auth','ngDialog', function($scope, $state, $http, Applicant, $window, Auth, ngDialog) {
 
     $scope.user = {};
     $scope.logIn = function() {
@@ -16,7 +16,7 @@ angular.module('evenhire.appLogin', [])
           }
         });
     };
-    $scope.closeDialog = function () {
+    $scope.closeDialog = function() {
       ngDialog.close();
     };
 

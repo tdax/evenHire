@@ -23,7 +23,7 @@ angular.module('evenhire.recruiters.factory', [])
         data: {jobId: jobId}
       })
       .then (function(data) {
-        console.log(data);
+        console.log('in factory', data);
         return data.data;
       }, function(err) {
         console.log('Error in reaching server. Error: ', err);
@@ -56,6 +56,24 @@ angular.module('evenhire.recruiters.factory', [])
         }
       })
       .then(function(data) {
+        return data.data;
+      }, function(err) {
+        return err;
+      });
+    };
+
+    recruiter.isInterested = function(isInterested, jobId, applicantId) {
+      return $http({
+        method: 'POST',
+        url: 'api/recruiter/isInterested',
+        data: {
+          isInterested: isInterested,
+          jobId: jobId,
+          applicantIdNum: applicantId
+        }
+      })
+      .then(function(data) {
+        console.log(data);
         return data.data;
       }, function(err) {
         return err;

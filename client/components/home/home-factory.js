@@ -1,6 +1,6 @@
 angular.module('evenhire.home.factory', [])
 
-  .factory('Home',['$state', function ($state) {
+  .factory('Home',['$state', function($state) {
     var home = {};
 
     home.states = ('AL AK AZ AR CA CO CT DE FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS ' +

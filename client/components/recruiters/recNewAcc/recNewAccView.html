@@ -8,13 +8,19 @@
         <input type="text" name="username" ng-model="recruiter.username" required>
       </md-input-container>
       <md-input-container>
-        <label>Password</label>
-        <input type="password" name="password" ng-model="recruiter.password"  required>
+        <label for="newPassword">Password</label>
+        <input type="password" name="password" ng-model-options="{ updateOn: 'blur' }" ng-model="recruiter.password"  required minlength="8">
+        <span ng-show="recSignup.password.$dirty && recSignup.password.$invalid">Password must be 8 characters or longer.
+        </span>
       </md-input-container>
+      <br>
       <md-input-container>
-        <label>Verify Password</label>
-        <input type="password" name="verify_password" ng-model="recruiter.verify_password"  required>
+        <label for="verify_password">Verify Password</label>
+        <input type="password" name="verify_password" ng-model="recruiter.verify_password" ng-model-options="{ updateOn: 'blur' }" value-matches="recruiter.password" required >
+        <span ng-show="recSignup.verify_password.$dirty && recSignup.verify_password.$invalid">Passwords must match.
+        </span>
       </md-input-container>
+      <br>
       <md-input-container>
         <label>Company Name</label>
         <input type="text" name="name" ng-model="recruiter.name" required>

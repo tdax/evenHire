@@ -1,7 +1,7 @@
 
 angular.module('evenhire.allJobs', [])
 
-  .controller('AllJobsController', ['$scope', '$state', 'Applicant', 'ngDialog', 'Auth', 'Home', function ($scope, $state, Applicant, ngDialog, Auth, Home) {
+  .controller('AllJobsController', ['$scope', '$state', 'Applicant', 'ngDialog', 'Auth', 'Home', function($scope, $state, Applicant, ngDialog, Auth, Home) {
     $scope.fetchedJobs = [];
     $scope.cities = Home.cities;
     // $scope.states = Home.states;
@@ -100,7 +100,7 @@ angular.module('evenhire.allJobs', [])
       });
     };
 
-    $scope.toggle = function (item, list) {
+    $scope.toggle = function(item, list) {
       var idx = list.indexOf(item);
       if (idx > -1) {
         list.splice(idx, 1);
@@ -110,7 +110,7 @@ angular.module('evenhire.allJobs', [])
       console.log('updated list is', list);
     };
 
-    $scope.exists = function (item, list) {
+    $scope.exists = function(item, list) {
       return list.indexOf(item) > -1;
     };
 
