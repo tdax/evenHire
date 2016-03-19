@@ -18,6 +18,7 @@ angular.module('evenhire.recruiters', [])
   $scope.jobTypes = Home.jobTypes;
   $scope.industries = Home.industries;
 
+
   $scope.newJobModal = function() {
     ngDialog.open({
       template: './components/recruiters/recHome/newJobDialog.tmpl.html',
@@ -30,8 +31,8 @@ angular.module('evenhire.recruiters', [])
   };
 
   $scope.contactApplicantModal = function(applicantIndex) {
-    $scope.emailOfApplicantToContact = $scope.applicantsToView[applicantIndex].email;
-    $scope.interestedApplicant = $scope.applicantsToView[applicantIndex];
+    $scope.emailOfApplicantToContact = $scope.applicantsToView[applicantIndex]['who'].email;
+    $scope.interestedApplicant = $scope.applicantsToView[applicantIndex]['who'];
     ngDialog.open({
       template: './components/recruiters/recHome/contactDialog.tmpl.html',
       controller: 'RecHomeController',
@@ -43,10 +44,30 @@ angular.module('evenhire.recruiters', [])
   $scope.getApplicants = function(jobId, jobObj) {
     Recruiter.grabApplicants(jobId)
       .then(function(data) {
-        $scope.applicantsToView = data;
-        $scope.currentJob = jobObj;
-      }, function() {
-        $scope.error = 'Unable to get applicants';
+        Recruiter.grabInterested(jobId)
+          .then(function(interested) {
+            $scope.currentJob = jobObj;
+            for(var i = 0; i < data.length; i++) {
+              for(var j = 0; j < interested.length; j++) {
+                if(data[i].id === interested[j].applicantId) {
+                  if(interested[j].isInterested === true) {
+                    $scope.applicantsToView.push({who: data[i], interesting: 'interesting'});
+                  }
+                  if(interested[j].isInterested === false) {
+                    $scope.applicantsToView.push({who: data[i], interesting: 'uninteresting'});
+                  }
+                  if(interested[j].isInterested === null) {
+                    $scope.applicantsToView.push({who: data[i], interesting: 'neutral'});
+                  }
+                }
+              }
+            }
+            // setCSS();
+            console.log('WOOOOOOOOOO: ', $scope.applicantsToView);
+            console.log('');
+          }, function() {
+            $scope.error = 'Unable to grab stuff';
+          });
       });
   };
 
@@ -94,4 +115,5 @@ angular.module('evenhire.recruiters', [])
         console.log(response);
       });
   };
+
 }]);

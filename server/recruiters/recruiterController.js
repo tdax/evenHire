@@ -42,7 +42,7 @@ module.exports = {
       });
   },
 
-  getApplicants: function(req, res) {
+  grabApplicants: function(req, res) {
     Models.Job.findById(req.body.jobId)
       .then(function(job) {
         job.getApplicants()
@@ -197,9 +197,18 @@ module.exports = {
         });
       })
       .catch(function(err) {
-        console.log('Err: ', err);
-        return res.status().send(err);
+        return res.status(500).send(err);
       })
+  },
+
+  grabInterested: function(req, res) {
+    Models.JobApplicant.findAll({where: {jobId: req.body.jobId}})
+      .then(function(interested) {
+        res.status(200).send(interested);
+      })
+      .catch(function(error) {
+        return res.status(500).send(err);
+      });
   }
 
 };

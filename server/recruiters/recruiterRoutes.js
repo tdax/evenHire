@@ -4,7 +4,7 @@ module.exports = function (router) {
   //Get all posted jobs for a given recruiterId
   router.get('/allPostedJobs', Recruiter.getAllJobs);
   //Get list of applicants who've applied to particular job
-  router.post('/getApplicants', Recruiter.getApplicants);
+  router.post('/getApplicants', Recruiter.grabApplicants);
   //Allow recruiters to login to the site
   router.post('/login', Recruiter.login);
   //Email an applicant to schedule an interview
@@ -19,4 +19,6 @@ module.exports = function (router) {
   router.get('/showJobsAppsDB', Recruiter.getJobAppRelations);
   //To know if a recruiter is interested in a particular applicant
   router.post('/isInterested', Recruiter.isInterested);
+  //Grabbing list of applicants that recruiters are interested in
+  router.post('/grabbingInterested', Recruiter.grabInterested);
 };

@@ -37,17 +37,17 @@
     </div>
       <div flex="60">
       <h3 class="md-title">Select a job to view applicants</h3>
-        <md-card class="md-padding" ng-repeat="applicant in applicantsToView">
+        <md-card class="md-padding" ng-repeat="applicant in applicantsToView" ng-class="{{applicant.interesting}}">
           <md-card-content>
             <div layout="row" layout-align="space-between">
               <div flex="20">
-                <h4>ID Number: </h4><p>{{applicant.id}}</p><br>
+                <h4>ID Number: </h4><p>{{applicant.who.id}}</p><br>
               </div>
               <div flex="20">
-                <h4>City: </h4><p>{{applicant.city}}, {{applicant.state}}</p><br>
+                <h4>City: </h4><p>{{applicant.who.city}}, {{applicant.who.state}}</p><br>
               </div>
             </div>
-            <h4>Education: </h4><p class="prewrap">{{applicant.education}}</p>
+            <h4>Education: </h4><p class="prewrap">{{applicant.who.education}}</p>
 <!--             <div>
               <h4>Work Experience: </h4>{{applicant.work_exp}}<br>
               <h4>Resume: </h4>{{applicant.resume}}<br>
