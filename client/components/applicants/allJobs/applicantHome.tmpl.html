@@ -29,6 +29,14 @@
         <label>City</label>
         <input type="text" name="city" ng-model="loggedInUser.city" required></input>
       </md-input-container>
+       <md-input-container flex="15">
+          <label>State</label>
+            <md-select ng-model="loggedInUser.state" flex>
+              <md-option ng-repeat="state in states" value="{{state.abbrev}}">
+                {{state.abbrev}}
+              </md-option>
+            </md-select>
+        </md-input-container>
       <md-input-container>
         <label>Education</label>
         <input type="text" name="education" ng-model="loggedInUser.education" required></input>
@@ -41,7 +49,7 @@
         <label>Resume</label>
         <textarea rows="3" type="text" name="resume" ng-model="loggedInUser.resume" required></textarea>
       </md-input-container>
-      <md-button class="md-raised md-primary" type="submit" ng-disabled="appNewAccountForm.$invalid" ng-click="saveUpdate(loggedInUser, currentUserType);closeDialog()">Save</md-button>
+      <md-button class="md-raised md-primary" type="submit" ng-disabled="appNewAccountForm.$invalid" ng-click="saveUpdate(loggedInUser, currentUserType)">Save</md-button>
       </form>
     </md-content>
   </div>

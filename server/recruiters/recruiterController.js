@@ -14,7 +14,6 @@ module.exports = {
       .then(function(results) {
         //add applicant count to each job
         for (var i = 0; i < results.length; i++) {
-        // var job = results[0]
           results[i].countApplicants()
             .then(function(count) {
               applicantCount.push(count);
@@ -47,7 +46,8 @@ module.exports = {
       .then(function(job) {
         job.getApplicants({joinTableAttributes: ['isInterested']})
           .then(function(applicants) {
-            res.send(applicants);
+            console.log('applicants');
+             res.send(applicants);
           })
           .catch(function(err) {
             console.log('Error in finding applicants', err);
@@ -142,7 +142,6 @@ module.exports = {
       text: req.body.message
     };
     console.log('email we want to send is: ', email);
-    console.log('testing to see if our process.env.mailgundomain works: ', process.env.MAILGUN_DOMAIN);
     mailgun.messages().send(email, function(error, body) {
       console.log('resonse from mail gun is, ', body);
       res.send(body);

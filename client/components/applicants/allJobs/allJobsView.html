@@ -80,11 +80,13 @@
                 <h4>Career Level: </h4><p>{{job.career_level}}</p>
               </div>
             </div>
+            <div ng-show="showJobDetails">
             <h4>Description: </h4><p>{{job.description}}</p>
             <h4>Qualifications: </h4><p>{{job.qualifications}}</p>
+            </div>
           </md-card-content>
           <md-card-actions layout="row" layout-align="end center">
-            <md-button ng-click="">View more</md-button>
+            <md-button ng-click="showJobDetails=!showJobDetails">View more</md-button>
             <md-button ng-click="submitApplication(job.id)">Apply for job id {{job.id}}</md-button>
           </md-card-actions>
         </md-card>

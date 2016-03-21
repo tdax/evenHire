@@ -5,12 +5,10 @@ module.exports = function(router) {
   router.post('/signup', Applicant.signup);
   router.get('/allJobs', Applicant.getAllJobs);
   router.post('/apply', Applicant.submitApplication);
-  //To view jobs db, visit /api/applicants/showJobsDB
+  //To view jobs db, visit /api/applicant/showJobsDB
   router.get('/showJobsDB', Applicant.getAllJobs);
-  //To view applicants db, visit /api/applicants/showApplicantsDB
+  //To view applicants db, visit /api/applicant/showApplicantsDB
   router.get('/showApplicantsDB', Applicant.getAllApplicants);
   //To update applicants profile
   router.post('/userUpdate', Applicant.userUpdate);
-  //To update forgot Password
-  router.post('/forgotPassword', Applicant.forgotPassword);
 };

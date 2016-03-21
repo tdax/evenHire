@@ -59,7 +59,13 @@ angular.module('evenhire',[
         url: '/recNewAcc',
         templateUrl: 'components/recruiters/recNewAcc/recNewAccView.html',
         controller: 'RecNewAccController'
+      })
+      .state('resetPassword', {
+        url: '/resetPassword/:token',
+        templateUrl: 'auth/resetPassword.html',
+        controller: 'AuthController'
       });
+
       $httpProvider.interceptors.push('AttachTokens');
   })
   .factory('AttachTokens', function($window) {

@@ -1,20 +1,26 @@
-<div flex layout="row" layout-align="center center">
-  <div class="authForm" flex="50" layout="column">
-    <h2 class="md-headline">Login as an Applicant</h2>
-    <md-input-container>
-      <label>Username</label>
-      <input type="text" ng-model="user.username" required/>
-    </md-input-container>
-    <md-input-container>
-      <label>Password</label>
-      <input type="password" ng-model="user.password" required/>
-    </md-input-container>
-    <div layout="row" flex layout-align="end start">
-      <div flex layout="column">
-        <span class="md-caption subtext">Don't have an Evenhire account? <a ui-sref="appNewAcc">Sign up</a><br>
-        <a href="" ng-click="forgotPassword()">Forgot your password?</a></span>
+<div layout="row" layout-align="center center">
+  <div class="authForm" flex="50">
+    <h2 class="md-headline">Applicants Login</h2>
+    <form>
+      <div layout-align="column">
+        <div flex layout="row">
+          <md-input-container flex="50">
+            <label>Username</label>
+            <input type="text" ng-model="user.username" required/>
+          </md-input-container>
+          <md-input-container flex="50">
+            <label>Password</label>
+            <input type="password" ng-model="user.password" required/>
+          </md-input-container>
+        </div>
+        <div layout="row" flex layout-align="space-between">
+          <div flex layout="column">
+            <span class="md-caption subtext">Don't have an Evenhire applicant account? <a ui-sref="appNewAcc">Sign up</a><br>
+            <a href="" ng-click="forgotPassword()">Forgot your password?</a></span>
+          </div>
+          <md-button class="md-raised md-primary" type="submit" ng-click="logIn()">Submit</md-button>
+        </div>
       </div>
-      <md-button class="md-raised md-primary" type="submit" ng-click="logIn()">Submit</md-button>
-    </div>
+    </form>
   </div>
 </div>

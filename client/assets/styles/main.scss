@@ -58,12 +58,46 @@ div {
     }
   }
   md-card.true {
-    background-color: green;
+    background-color: rgba(0, 151, 0, 0.38);
   }
   md-card.false {
-    background-color: red;
+    background-color: #FFDCDC;
   }
 }
+
+// JOB POSTINGS IN REC HOME
+div.recHome {
+  div {
+    md-card {
+      md-card-title {
+        padding: 16px 16px 16px;
+        span.md-subhead {
+          padding: 0px;
+        }
+      }
+      md-card-content {
+        padding-bottom: 10px;
+      }
+    }
+  }
+}
+
+// Animations
+.ng-hide-add, .ng-hide-remove {
+    -webkit-transition:all linear 0.3s;
+    -moz-transition:all linear 0.3s;
+    -o-transition:all linear 0.3s;
+    transition: all linear 0.3s;
+    display: block !important;
+}
+.animate {
+  opacity: 1;
+}
+
+.animate.ng-hide {
+  opacity: 0;
+}
+
 
 // CONTINUED.. Sidebar styling
 #jobFilterColumn {

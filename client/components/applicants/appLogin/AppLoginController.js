@@ -22,7 +22,7 @@ angular.module('evenhire.appLogin', [])
 
     $scope.forgotPassword = function() {
       ngDialog.open({
-        template: './components/applicants/appLogin/appLogin.tmpl.html',
+        template: './components/applicants/appLogin/appForgetPassword.tmpl.html',
         controller: 'AppLoginController',
         className: 'ngdialog-theme-default',
         closeByDocument: false,
@@ -31,10 +31,12 @@ angular.module('evenhire.appLogin', [])
     };
 
     $scope.sendEmail = function(loggedInUser, currentUserType) {
+      // console.log(loggedInUser, currentUserType);
       Auth.forgotPassword(loggedInUser, currentUserType)
-      .then(function() {
-        console.log('inside')
+      .then(function(data) {
+        console.log(data.body.message);
       })
+    $scope.closeDialog();
     };
 
 }]);

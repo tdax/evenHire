@@ -29,5 +29,9 @@ angular.module('evenhire.applicants.factory', [])
       });
     };
 
+    applicant.closeDialog = function() {
+      ngDialog.close();
+    };
+
     return applicant;
   }])

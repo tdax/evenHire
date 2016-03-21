@@ -1,40 +1,26 @@
 <div layout="row" layout-align="center center">
-  <div flex="50">
-    <h2 class="md-headline">Recruiters Login here</h2>
-    <md-content>
-      <form name="recLogin">
-        <md-input-container>
-          <label>Username</label>
-          <input type="text" ng-model="user.username" required/>
-        </md-input-container>
-        <md-input-container>
-          <label>Password</label>
-          <input type="password" ng-model="user.password" required/>
-        </md-input-container>
-        <md-button class="md-raised md-primary" type="submit" ng-click="logIn()" />Submit</md-button>
-      </md-content>
+  <div class="authForm" flex="50">
+    <h2 class="md-headline">Recruiters Login</h2>
+    <form name="recLogin">
+      <div layout-align="column">
+        <div flex layout="row">
+          <md-input-container flex="50">
+            <label>Username</label>
+            <input type="text" ng-model="user.username" required/>
+          </md-input-container>
+          <md-input-container flex="50">
+            <label>Password</label>
+            <input type="password" ng-model="user.password" required/>
+          </md-input-container>
+        </div>
+        <div layout="row">
+          <div flex layout="column">
+            <span class="md-caption subtext">Don't have an Evenhire recruiter account? <a ui-sref="recNewAcc">Sign up</a><br>
+            <a href="" ng-click="forgotPassword()">Forgot your password?</a></span>
+          </div>
+          <md-button class="md-raised md-primary" type="submit" ng-click="logIn()" />Submit</md-button>
+        </div>
+      </div>
     </form>
-      Don't have an account? <a ui-sref="recNewAcc">Sign up here!</a>
   </div>
 </div>
-<!-- old plain angular
-<h2>Recruiters Login here</h2>
-<div>
-
-  <form name="login"ng-submit="submitForm(login.$valid)" novalidate>
-    <div  ng-class="{'has-error': login.username.$invalid}">
-      <input type="text" placeholder="Username"name="username" ng-model="user.username" required/>
-      <p ng-show="login.username.$invalid && login.username.$touched" >Username required</p>
-    </div>
-
-    <div  ng-class="{'has-error': login.password.$invalid}">
-      <input type="password" placeholder="Password" name="password"ng-model="user.password" required/>
-      <p ng-show="login.password.$invalid && login.password.$touched" >Password required</p>
-    </div>
-
-    <input ng-disabled="login.$invalid" type="submit" ng-click="logIn()" />
-  </form>
-
-  Don't have an account? <a ui-sref="recNewAcc">Sign up here!</a>
-</div>
--->

@@ -3,8 +3,9 @@ angular.module('evenhire.allJobs', [])
 
   .controller('AllJobsController', ['$scope', '$state', 'Applicant', 'ngDialog', 'Auth', 'Home', function($scope, $state, Applicant, ngDialog, Auth, Home) {
     $scope.fetchedJobs = [];
+    //options for filling out forms
     $scope.cities = Home.cities;
-    // $scope.states = Home.states;
+    $scope.states = Home.states;
     $scope.careerLevels = Home.careerLevels;
     $scope.jobTypes = Home.jobTypes;
     $scope.industries = Home.industries;
@@ -38,14 +39,14 @@ angular.module('evenhire.allJobs', [])
       } else {
          Applicant.apply({job_id: job_id})
             .then(function(factoryResponse) {
-              console.log("factoryResponse in alljobsController", factoryResponse);  
+              console.log("factoryResponse in alljobsController", factoryResponse);
               if(factoryResponse.toString() === 'false') {
                 $scope.duplicateApplication();
               } else {
                 $scope.thankYouName = factoryResponse.first_name;
                 $scope.applicationThankYou();
               }
-            });      
+            });
       }
     };
 
@@ -81,6 +82,10 @@ angular.module('evenhire.allJobs', [])
       });
     };
 
+    $scope.closeDialog = function() {
+      ngDialog.close();
+    };
+
     $scope.onlyApplicantCanApply = function() {
       ngDialog.open({
         template: './components/applicants/allJobs/onlyApplicantCanApply.tmpl.html',
@@ -96,6 +101,7 @@ angular.module('evenhire.allJobs', [])
       console.log(loggedInUser, userType);
       Auth.userUpdate(loggedInUser, userType)
       .then(function(data) {
+        $scope.closeDialog();
         console.log('saveUpdate is:', data);
       });
     };

@@ -104,19 +104,40 @@ angular.module('evenhire.auth.factory', [])
       auth.forgotPassword = function(userData, userType) {
         return $http({
           method: 'POST',
-          url: 'api/' + userType + '/forgotPassword',
-          data: userData
+          url: 'api/auth/forgotPassword',
+          data: {
+            userData: userData,
+            userType: userType
+          }
         })
         .then(function(data) {
           console.log('response from server is, ', data);
-          if (data.data.type) {
-            auth.setUser(data.data.data, userType);
-          }
           return data.data;
         }, function(response) {
           console.log('response from data on error is, ', response)
         });
-      }
+      };
+
+      auth.updatePassword = function(newPassword, token) {
+        return $http({
+          method: 'POST',
+          url: 'api/auth/resetPassword',
+          data: {
+            newPassword: newPassword.newPassword,
+            token: token.token
+          }
+        })
+        .then(function(data) {
+          if (!data.data.type) {
+            return data.data.data
+          } else {
+            auth.setUser(data.data.data, data.data.userType)
+            return data.data;
+          }
+        }, function(err) {
+          return err;
+        });
+      };
 
     return auth;
   }]);

@@ -12,5 +12,8 @@ module.exports = {
   },
   decodeToken: function(token) {
     return jwt.decode(token, token_secret);
+  },
+  capitalize: function(string) {
+    return string[0].toUpperCase() + string.slice(1);
   }
 };
