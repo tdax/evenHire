@@ -19,4 +19,6 @@ module.exports = function (router) {
   router.get('/showJobsAppsDB', Recruiter.getJobAppRelations);
   //To know if a recruiter is interested in a particular applicant
   router.post('/isInterested', Recruiter.isInterested);
+  //To know if a recruiter has contacted a particular applicant
+  router.post('/contacted', Recruiter.contacted);
 };

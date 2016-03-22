@@ -44,7 +44,7 @@ module.exports = {
   getApplicants: function(req, res) {
     Models.Job.findById(req.body.jobId)
       .then(function(job) {
-        job.getApplicants({joinTableAttributes: ['isInterested']})
+        job.getApplicants({joinTableAttributes: ['isInterested','contacted']})
           .then(function(applicants) {
             console.log('applicants');
              res.send(applicants);
@@ -76,16 +76,10 @@ module.exports = {
           //Error in verifying
           if (err) {
             console.log('error in recruiterController');
-            return res.send({
-              type: false,
-              data: 'Error occured: ' + err
-            });
+            return res.status(400).send('Error in verifying password');
           }
           if (!(isVerified)) {
-            return res.send({
-              type: false,
-              data: 'Wrong password'
-            });
+            return res.status(400).send('Password does not match');
           } else {
             var token = authUtils.issueToken(recruiter.id, 'recruiter');
             console.log("Signin successful");
@@ -99,10 +93,7 @@ module.exports = {
       })
       .catch(function(error) {
         console.log('This user does not exist')
-        return res.send({
-          type: false,
-          data: 'User does not exist'
-        });
+        return res.status(400).send('User does not exist');
       });
   },
 
@@ -142,24 +133,25 @@ module.exports = {
       text: req.body.message
     };
     console.log('email we want to send is: ', email);
-    mailgun.messages().send(email, function(error, body) {
-      console.log('resonse from mail gun is, ', body);
-      res.send(body);
-    });
+    // mailgun.messages().send(email, function(error, body) {
+    //   console.log('resonse from mail gun is, ', body);
+    //   res.send(body);
+    // });
+    res.send("recruiterController on server side sent email")
   },
 
   signup: function(req, res) {
     if (!req.body.name || !req.body.username) {
       return res.send({
         type: false,
-        data: null
+        data: 'name and username required'
       });
     }
     var newUser = Models.Recruiter.build({
       name: req.body.name,
       username: req.body.username,
       password: req.body.password,
-      email: req.body.email,
+      email: req.body.email
     })
       .setPassword(req.body.password, function(updated) {
         updated.save()
@@ -196,6 +188,25 @@ module.exports = {
       .catch(function(err) {
         console.log('Err: ', err);
         return res.status().send(err);
+      })
+  },
+
+  contacted: function(req, res) {
+    var job = req.body.jobId;
+    var applicant = req.body.applicantIdNum;
+    var contacted = req.body.contacted;
+    Models.JobApplicant.findOne({where: {applicantId: applicant, jobId: job}})
+      .then(function(found) {
+        found.update({
+          contacted: contacted
+        })
+        .then(function(inserted) {
+          res.status(200).send(inserted);
+        });
+      })
+      .catch(function(err) {
+        console.log('Err: ', err);
+        return res.status(400).send(err);
       })
   }
 

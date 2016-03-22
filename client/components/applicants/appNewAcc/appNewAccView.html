@@ -37,13 +37,13 @@
         </md-input-container>
         <md-input-container flex>
           <label for="newPassword">Password</label>
-          <input type="password" name="newPassword" ng-model="password.new" ng-model-options="{ updateOn: 'blur' }" required minlength="8">
+          <input type="password" name="newPassword" ng-model="applicant.password.new" ng-model-options="{ updateOn: 'blur' }" required minlength="8">
           <span ng-show="appNewAccountForm.newPassword.$dirty && appNewAccountForm.newPassword.$invalid">Password must be 8 characters or longer.
           </span>
         </md-input-container>
         <md-input-container flex>
           <label for="newPasswordConfirm">Verify Password</label>
-          <input type="password" name="newPasswordConfirm" ng-model="password.confirm" ng-model-options="{ updateOn: 'blur' }" value-matches="password.new" required/>
+          <input type="password" name="newPasswordConfirm" ng-model="applicant.password.confirm" ng-model-options="{ updateOn: 'blur' }" value-matches="applicant.password.new" required/>
           <span ng-show="appNewAccountForm.newPasswordConfirm.$dirty && appNewAccountForm.newPasswordConfirm.$invalid">Passwords must match.
           </span>
         </md-input-container>

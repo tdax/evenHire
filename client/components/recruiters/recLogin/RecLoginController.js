@@ -10,7 +10,7 @@ angular.module('evenhire.recLogin', [])
     $scope.logIn = function() {
       Auth.login($scope.user, 'recruiter')
       .then(function(data) {
-        if (!(data.type)) {
+        if (data.status === 400) {
           console.log('error!', data.data);
         } else {
           $window.localStorage.setItem('evenhire', data.token);

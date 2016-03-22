@@ -80,5 +80,23 @@ angular.module('evenhire.recruiters.factory', [])
       });
     };
 
+    recruiter.contacted = function(contacted, jobId, applicantId) {
+      return $http({
+        method: 'POST',
+        url: 'api/recruiter/contacted',
+        data: {
+          contacted: contacted,
+          jobId: jobId,
+          applicantIdNum: applicantId
+        }
+      })
+      .then(function(data) {
+        console.log(data);
+        return data.data;
+      }, function(err) {
+        return err;
+      });
+    };
+
     return recruiter;
   }])

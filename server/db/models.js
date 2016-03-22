@@ -48,6 +48,7 @@ module.exports = function(db) {
     anon_id: Sequelize.STRING,
     email: Sequelize.STRING,
     city: Sequelize.STRING,
+    state: Sequelize.STRING,
     work_exp: Sequelize.TEXT,
     education: Sequelize.TEXT,
     resume: Sequelize.TEXT
@@ -91,7 +92,8 @@ module.exports = function(db) {
   });
 
   var JobApplicant = db.define('jobs_applicants', {
-    isInterested: {type: Sequelize.BOOLEAN, defaultValue: null}
+    isInterested: {type: Sequelize.BOOLEAN, defaultValue: null},
+    contacted: {type: Sequelize.BOOLEAN, defaultValue: false}
   });
 
   //set up one to many relationship
@@ -102,7 +104,7 @@ module.exports = function(db) {
   Applicant.belongsToMany(Job, {through: 'jobs_applicants'});
 
   //WARNING! to sync and possibly clear db uncomment this line:
-  // db.sync({force: true});
+  //db.sync({force: true});
 
   return {
     Job: Job,

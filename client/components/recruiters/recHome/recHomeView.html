@@ -37,7 +37,7 @@
     </div>
       <div flex="60">
       <h3 class="md-title">Select a job to view applicants</h3>
-        <md-card class="{{applicant.jobs_applicants.isInterested}} " ng-repeat="applicant in applicantsToView">
+        <md-card class="{{applicant.jobs_applicants.isInterested}}" ng-repeat="applicant in applicantsToView">
           <md-card-content>
           {{applicant.jobs_applicants.isInterested}}
             <div layout="row" layout-align="space-between">
@@ -55,6 +55,9 @@
             </div> -->
           </md-card-content>
           <md-card-actions layout="row" layout-align="end center">
+            <span ng-show="{{applicant.jobs_applicants.contacted}}">
+              You've contacted this applicant.
+            </span>
             <md-button class="md-raised" ng-click="contactApplicantModal($index)">View more</md-button>
           </md-card-actions>
         </div>

@@ -92,7 +92,7 @@ gulp.task('clientTest:dev', function(done) {
 //Run server-side tests
 gulp.task('serverTest', function() {
   return gulp.src(['tests/server_side/**/*.js'], {read: false})
-    .pipe(mocha({reporter: 'spec'}))
+    .pipe(mocha({reporter: 'spec', timeout: 5000}))
     .on('error', util.log)
     .once('end', function() {
       process.exit();
