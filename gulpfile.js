@@ -1,7 +1,6 @@
 var gulp = require('gulp');
 //Include our plugins
 var concat = require('gulp-concat');
-var copy = require('gulp-copy');
 var cssmin = require('gulp-cssmin');
 var del = require('del');
 var nodemon = require('gulp-nodemon');
