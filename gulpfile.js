@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 //Include our plugins
 var concat = require('gulp-concat');
+var copy = require('gulp-copy');
 var cssmin = require('gulp-cssmin');
 var del = require('del');
 var nodemon = require('gulp-nodemon');
@@ -34,12 +35,10 @@ gulp.task('clean', function() {
   return del(['client/dist/']);
 });
 
-//Lint js in client dir, not used
-// gulp.task('lint', function() {
-//   return gulp.src('./client/**/*.js')
-//     .pipe(jshint())
-//     .pipe(jshint.reporter('default'));
-// });
+gulp.task('copy', function() {
+  return gulp.src('./client/assets/imgs/**/*')
+    .pipe(gulp.dest('./client/dist/imgs'));
+});
 
 //Concatenante js libraries
 gulp.task('libs', function() {
@@ -111,7 +110,7 @@ gulp.task('watch', ['build'], function() {
 });
 
 gulp.task('styles', ['scss', 'minStyles']);
-gulp.task('build', ['styles', 'libs', 'scripts']);
+gulp.task('build', ['copy', 'styles', 'libs', 'scripts']);
 gulp.task('tests', ['serverTest', 'clientTest']);
 gulp.task('start', ['build', 'serve', 'watch']);
 gulp.task('default', ['build', 'serve', 'watch']);

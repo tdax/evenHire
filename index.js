@@ -13,11 +13,7 @@ app.use(express.static(path.join(__dirname, '/client')));
 //middleware deals with applicant and recruiter login routes
 require('./server/middleware.js')(app, express);
 
-//routes.js deals with all other GET request routes like /*
-// require('./server/routes.js')(app, express);
-
 var port = process.env.PORT || 8000;
-
 
 app.listen(port, function() {
   console.log('EvenHire running on port ' + port);

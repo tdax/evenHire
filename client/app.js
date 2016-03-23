@@ -20,6 +20,7 @@ angular.module('evenhire',[
 
   .config(function($stateProvider, $urlRouterProvider, $httpProvider, $mdThemingProvider) {
     $mdThemingProvider.theme('default')
+      .primaryPalette('indigo');
     // .backgroundPalette('grey');
       // .dark();
     $urlRouterProvider.otherwise('/');

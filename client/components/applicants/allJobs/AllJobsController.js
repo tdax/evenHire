@@ -21,10 +21,14 @@ angular.module('evenhire.allJobs', [])
     $scope.levelFilter = [];
     $scope.industryFilter = [];
 
+    $scope.clearAll = function() {
+      $scope.cityFilter = [];
+      $scope.levelFilter = [];
+    };
+
     $scope.getAllJobs = function() {
       Applicant.allJobs()
         .then(function(data) {
-          console.log(data);
           $scope.fetchedJobs = data;
         });
     }();
@@ -98,7 +102,6 @@ angular.module('evenhire.allJobs', [])
 
     $scope.currentUserType = Auth.getCurrentUserType();
     $scope.saveUpdate = function(loggedInUser, userType) {
-      console.log(loggedInUser, userType);
       Auth.userUpdate(loggedInUser, userType)
       .then(function(data) {
         $scope.closeDialog();

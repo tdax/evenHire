@@ -1,5 +1,5 @@
-<div>
-  <md-content>
+<div id="appModal">
+  <md-content  class="{{interestedApplicant.jobs_applicants.isInterested}}">
     <md-tabs class="md-dynamic-height md-border-bottom">
       <md-tab label="Resume">
         <md-content class="md-padding" flex layout="column">
@@ -37,8 +37,10 @@
     </md-tabs>
   </md-content>
   <div layout="row" layout-align="end center">
-    <md-button class="md-raised md-primary" type="submit" ng-click="isNotInterested(interestedApplicant.id)">Not Interested</md-button>
-    <md-button class="md-raised md-primary" type="submit" ng-click="isInterested(interestedApplicant.id)">Interested</md-button>
+    <md-button ng-disabled="first" class="md-raised md-primary" type="submit" ng-click="previousApplicant()">Previous applicant</md-button>
+    <md-button ng-disabled="last" class="md-raised md-primary" type="submit" ng-click="nextApplicant()">Next applicant</md-button>
+    <md-button class="md-raised md-primary" type="submit" ng-click="isInterested(false, interestedApplicant.id)">Not Interested</md-button>
+    <md-button class="md-raised md-primary" type="submit" ng-click="isInterested(true, interestedApplicant.id)">Interested</md-button>
   </div>
 </div>
 

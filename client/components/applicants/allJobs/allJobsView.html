@@ -1,14 +1,20 @@
-<div md-padding>
-  <h2 class="md-headline">Job Postings</h2>
-  <md-button class="md-raised" ng-click="showAppInfo()">Applicants! View your profile</md-button><br>
-  <md-button ui-sref="recruiters" class="md-raised">Recruiters! Click here to see your posted jobs</md-button>
-  <div layout="row" flex>
-    <div flex="20"></div>
-    <md-input-container flex="80">
+<div layout-padding>
+  <div layout="row" layout-align="space-between">
+    <h2 class="md-headline">Job Postings</h2>
+    <div flex="20" layout="row" layout-align="end center">
+      <md-button flex ng-click="showAppInfo()">Update your profile</md-button>
+    </div>
+  </div>
+  <md-button ui-sref="recruiters">Recruiters post a job</md-button>
+  <div id="jobSubhead" layout="row" flex>
+    <div flex="20" layout="row" layout-align="end end">
+      <span class="md-caption smallSubtext" ng-click="clearAll()">Clear all filters</span>
+    </div>
+    <md-input-container flex="70" layout="row" layout-align="end end">
       <input type="text" ng-model="searchText" placeholder="search" />
     </md-input-container>
   </div>
-  <div layout="row" layout-xs="column" flex>
+  <div id="jobsBody" layout="row" layout-xs="column" flex>
     <div id="jobFilterColumn" layout="column" flex="20">
       <div layout="column">
         <fieldset class="standard">
@@ -86,8 +92,8 @@
             </div>
           </md-card-content>
           <md-card-actions layout="row" layout-align="end center">
-            <md-button ng-click="showJobDetails=!showJobDetails">View more</md-button>
-            <md-button ng-click="submitApplication(job.id)">Apply for job id {{job.id}}</md-button>
+            <md-button flex="90" ng-click="showJobDetails=!showJobDetails">View more</md-button>
+            <md-button flex="10" class="md-primary md-raised" ng-click="submitApplication(job.id)">Apply</md-button>
           </md-card-actions>
         </md-card>
       </md-content>

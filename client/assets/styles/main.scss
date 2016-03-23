@@ -1,85 +1,128 @@
 $smallSubtext: rgb(140, 140, 140);
 $legendTitle: #3F51B5;
+$red: #FFDCDC;
+$green: rgba(0, 151, 0, 0.38);
+$dialogColor: #fff;
 
 body {
-  font-family: 'Arial', 'sans-serif';
+  font-family: 'Roboto', 'Arial', 'sans-serif';
 }
 
 .prewrap {
   white-space: pre-wrap;
 }
 
+// MAIN HEADER
+div#menuHome {
+  cursor: pointer;
+  h2 {
+    font-size: 24px;
+    font-weight: 900;
+    letter-spacing: 1px;
+  }
+}
+
+// HOME
+div#hero {
+  color: #fff;
+  background: linear-gradient(rgba(20,20,20, .75), rgba(20,20,20, .75)), url('/dist/imgs/evenhire_bckgrnd.jpg');
+  background-size: cover;
+  height: 525px;
+}
+
 // NG DIALOG
 .ngdialog.ngdialog-theme-default .ngdialog-content {
     width: 1200px;
     div {
-      md-content {
-        md-tabs {
-          md-tab-content {
-            span.subtitle {
-              font-weight: 600;
-            }
-            div.headerId {
-              text-align: center;
-            }
-          }
+      md-tab-content {
+        span.subtitle {
+          font-weight: 600;
+        }
+        div.headerId {
+          text-align: center;
         }
       }
     }
+}
+html.ngdialog-open {
+  overflow: visible;
 }
 
 div.md-select-menu-container.md-active.md-clickable {
   z-index: 99999;
 }
 
+//NG DIALOG REVIEW APPLICANTS
+div#appModal {
+  md-content.true {
+    background-color: $green;
+  }
+  md-content.false {
+    background-color: $red;
+  }
+}
+
 //JOB CARDS (IN VIEW ALL JOBS AND RECRUITER HOME)
 
-div {
-  md-card {
-    md-card-title-text {
-      span.md-subhead {
-        line-height: 19px;
-        padding: 0px;
+md-card {
+  margin: 14px 8px;
+  md-card-title-text {
+    span.md-subhead {
+      line-height: 19px;
+      padding: 0px;
 
-        span.larger.ng-binding {
-          font-size: 16px;
-        }
-      }
-    }
-    md-card-content {
-      div {
-        h4 {
-          margin: 2px 0px;
-        }
-        p {
-          margin: 0 0 8px 0;
-        }
+      span.larger.ng-binding {
+        font-size: 16px;
       }
     }
   }
-  md-card.true {
-    background-color: rgba(0, 151, 0, 0.38);
+  md-card-content {
+    h4 {
+      margin: 2px 0px;
+    }
+    p {
+      margin: 0 0 8px 0;
+    }
   }
-  md-card.false {
-    background-color: #FFDCDC;
-  }
+}
+md-card.true {
+  background-color: $green;
+}
+md-card.false {
+  background-color: $red;
+}
+
+md-card-content#applicantCard {
+
 }
 
 // JOB POSTINGS IN REC HOME
 div.recHome {
-  div {
-    md-card {
-      md-card-title {
-        padding: 16px 16px 16px;
-        span.md-subhead {
-          padding: 0px;
-        }
-      }
-      md-card-content {
-        padding-bottom: 10px;
-      }
+  md-card-title {
+    padding: 16px 16px 16px;
+    span.md-subhead {
+      padding: 0px;
     }
   }
+  md-card-content {
+    padding-bottom: 10px;
+  }
+}
+
+div#jobSubhead {
+  padding-bottom: 0px;
+  md-input-container {
+    margin: 0px 7px;
+    padding: 0px;
+  }
+  span.smallSubtext {
+    color: $smallSubtext;
+    cursor: pointer;
+  }
+}
+
+div#jobsBody {
+  padding-top: 0px;
 }
 
 // Animations
@@ -111,13 +154,9 @@ div.recHome {
         color: $legendTitle;
         cursor: pointer;
       }
-      div {
-        div {
-          md-checkbox {
-            margin: 0px;
-            line-height: 21px;
-          }
-        }
+      md-checkbox {
+        margin-bottom: 4px;
+        line-height: 21px;
       }
     }
   }
@@ -128,12 +167,8 @@ div.authForm {
   md-input-container {
     margin: 0px;
   }
-  div {
-    div {
-      span.subtext {
-        color: $smallSubtext;
-      }
-    }
+  span.subtext {
+    color: $smallSubtext;
   }
 }
 

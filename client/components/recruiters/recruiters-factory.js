@@ -2,6 +2,23 @@ angular.module('evenhire.recruiters.factory', [])
   .factory('Recruiter', ['$http', 'Auth', function($http, Auth) {
     var recruiter = {};
 
+    recruiter.contacted = function(contacted, jobId, applicantId) {
+      return $http({
+        method: 'POST',
+        url: 'api/recruiter/contacted',
+        data: {
+          contacted: contacted,
+          jobId: jobId,
+          applicantIdNum: applicantId
+        }
+      })
+      .then(function(data) {
+        return data.data;
+      }, function(err) {
+        return err;
+      });
+    };
+
     recruiter.getPostedJobs = function() {
       return $http({
         method: 'GET',
@@ -27,6 +44,24 @@ angular.module('evenhire.recruiters.factory', [])
         return data.data;
       }, function(err) {
         console.log('Error in reaching server. Error: ', err);
+      });
+    };
+
+    recruiter.isInterested = function(isInterested, jobId, applicantId) {
+      return $http({
+        method: 'POST',
+        url: 'api/recruiter/isInterested',
+        data: {
+          isInterested: isInterested,
+          jobId: jobId,
+          applicantIdNum: applicantId
+        }
+      })
+      .then(function(data) {
+        console.log(data);
+        return data.data;
+      }, function(err) {
+        return err;
       });
     };
 
@@ -56,42 +91,6 @@ angular.module('evenhire.recruiters.factory', [])
         }
       })
       .then(function(data) {
-        return data.data;
-      }, function(err) {
-        return err;
-      });
-    };
-
-    recruiter.isInterested = function(isInterested, jobId, applicantId) {
-      return $http({
-        method: 'POST',
-        url: 'api/recruiter/isInterested',
-        data: {
-          isInterested: isInterested,
-          jobId: jobId,
-          applicantIdNum: applicantId
-        }
-      })
-      .then(function(data) {
-        console.log(data);
-        return data.data;
-      }, function(err) {
-        return err;
-      });
-    };
-
-    recruiter.contacted = function(contacted, jobId, applicantId) {
-      return $http({
-        method: 'POST',
-        url: 'api/recruiter/contacted',
-        data: {
-          contacted: contacted,
-          jobId: jobId,
-          applicantIdNum: applicantId
-        }
-      })
-      .then(function(data) {
-        console.log(data);
         return data.data;
       }, function(err) {
         return err;

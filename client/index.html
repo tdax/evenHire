@@ -3,40 +3,30 @@
   <head>
     <metacontent="text/html; charset=UTF-8" />
     <title>EvenHire</title>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
     <link href="./dist/styles/all.min.css" rel="stylesheet">
     <script src="./dist/libs.js"></script>
     <script src="./dist/all.min.js"></script>
   </head>
   <body>
     <md-toolbar>
-      <div layout="row" layout-sm="column" layout-align="space-around center" layout-padding>
-        <div flex="12">
-          <md-button ui-sref="home">Home</md-button>
+      <div class="md-toolbar-tools" layout-sm="column" layout-align="space-between">
+        <div id="menuHome" ui-sref="home" layout="row" layout-align="start center">
+          <h2>EvenHire</h2>
         </div>
-        <div flex="12">
-          <md-button ui-sref="appLogin">AppLogin</md-button>
-        </div>
-        <div flex="12">
-          <md-button ui-sref="appNewAcc">AppNewAcc</md-button>
-        </div>
-        <div flex="12">
-          <md-button ui-sref="recruiters">View Apps</md-button>
-        </div>
-        <div flex="12">
-          <md-button ui-sref="recLogin">RecLogin</md-button>
-        </div>
-        <div flex="12">
-          <md-button ui-sref="recNewAcc">RecNewAcc</md-button>
-        </div>
-        <div flex="12">
-          <md-button ui-sref="allJobs">View Jobs</md-button>
-        </div>
-        <div flex="12" ng-controller="AuthController">
-          <md-button ng-click="logOut()">Logout</md-button>
-          <md-button ng-click="getUser()">Get current user</md-button>
+        <div layout="row" layout-align="end center">
+          <div layout="row" layout-align="end center">
+            <md-button ui-sref="recruiters">Find Talent</md-button>
+          </div>
+          <div layout="row" layout-align="end center">
+            <md-button ui-sref="allJobs">View Jobs</md-button>
+          </div>
+          <div layout="row" layout-align="end center" ng-controller="AuthController">
+            <md-button ng-click="logOut()">Logout</md-button>
+          </div>
         </div>
       </div>
     </md-toolbar>
-    <div ui-view layout-padding></div>
+    <div ui-view></div>
   </body>
 </html>

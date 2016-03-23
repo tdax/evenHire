@@ -1,10 +1,10 @@
 <div class="md-padding recHome">
   <h2 class="md-headline">Welcome {{companyName}}!</h2>
   {{message}}
-  <md-button class="md-raised" ng-click="newJobModal()">Click here to post a job</md-button>
+  <md-button class="md-raised" ng-click="newJobModal()">Post a job</md-button>
   <div flex layout="row">
     <div flex="40">
-    <h3 class="md-title">Job listings:</h3>
+    <h3 class="md-title">Your job listings:</h3>
       <md-card ng-repeat="job in postedJobs.results">
         <md-card-title>
           <md-card-title-text>
@@ -38,8 +38,8 @@
       <div flex="60">
       <h3 class="md-title">Select a job to view applicants</h3>
         <md-card class="{{applicant.jobs_applicants.isInterested}}" ng-repeat="applicant in applicantsToView">
-          <md-card-content>
-          {{applicant.jobs_applicants.isInterested}}
+          <md-card-content id="applicantCard">
+          <!-- {{applicant.jobs_applicants.isInterested}} -->
             <div layout="row" layout-align="space-between">
               <div flex="20">
                 <h4>ID Number: </h4><p>{{applicant.id}}</p><br>
@@ -49,16 +49,9 @@
               </div>
             </div>
             <h4>Education: </h4><p class="prewrap">{{applicant.education}}</p>
-<!--             <div>
-              <h4>Work Experience: </h4>{{applicant.work_exp}}<br>
-              <h4>Resume: </h4>{{applicant.resume}}<br>
-            </div> -->
           </md-card-content>
           <md-card-actions layout="row" layout-align="end center">
-            <span ng-show="{{applicant.jobs_applicants.contacted}}">
-              You've contacted this applicant.
-            </span>
-            <md-button class="md-raised" ng-click="contactApplicantModal($index)">View more</md-button>
+            <md-button class="md-raised" ng-click="contactApplicantModal($index)">{{(applicant.jobs_applicants.contacted) ? 'Emailed' : 'View more'}}</md-button>
           </md-card-actions>
         </div>
       </div>
