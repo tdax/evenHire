@@ -2,9 +2,9 @@
   <h2 class="md-headline">Welcome {{companyName}}!</h2>
   {{message}}
   <md-button class="md-raised" ng-click="newJobModal()">Post a job</md-button>
+  <h3 class="md-title">Your job listings:</h3>
   <div flex layout="row">
     <div flex="40">
-    <h3 class="md-title">Your job listings:</h3>
       <md-card ng-repeat="job in postedJobs.results">
         <md-card-title>
           <md-card-title-text>
@@ -31,15 +31,16 @@
         </md-card-content>
         <md-card-actions layout="row" layout-align="end center">
           <md-button ng-click="showJobDetails=!showJobDetails">View more</md-button>
-          <md-button ng-click="getApplicants(job.id, job)">Show applicants</md-button>
+          <md-button ng-click="getApplicants(job.id, job); scrollToTop()">Show applicants</md-button>
         </md-card-actions>
       </md-card>
     </div>
-      <div flex="60">
-      <h3 class="md-title">Select a job to view applicants</h3>
+      <div flex="60" layout="column" layout-align="start">
+        <div class="animate" flex="20" ng-show="selectJobPrompt" layout="row" layout-align="center start">
+          <h4 class="grey">Select a job to view applicants</h4>
+        </div>
         <md-card class="{{applicant.jobs_applicants.isInterested}}" ng-repeat="applicant in applicantsToView">
           <md-card-content id="applicantCard">
-          <!-- {{applicant.jobs_applicants.isInterested}} -->
             <div layout="row" layout-align="space-between">
               <div flex="20">
                 <h4>ID Number: </h4><p>{{applicant.id}}</p><br>

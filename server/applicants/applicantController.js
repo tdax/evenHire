@@ -32,25 +32,25 @@ module.exports = {
     Models.Applicant.findOne({ where: {username: req.body.username }})
       .then(function(applicant) {
         applicant.verifyPassword(req.body.password, function(err, isVerified) {
+          //Wrong password
+          if (!(isVerified)) {
+            return res.status(400).send('You have entered an invalid username or password');
+          }
           //Error in verifying password
           if (err) {
             return res.status(400).send('Error in verifying password');
           }
-          if (!(isVerified)) {
-            return res.status(400).send('Password does not match');
-          } else {
-            var token = authUtils.issueToken(applicant.id, 'applicant');
-            console.log('Sign in successful');
-            return res.send({
-              type: true,
-              token: token,
-              data: applicant
-            });
-          }
+          var token = authUtils.issueToken(applicant.id, 'applicant');
+          console.log('Sign in successful');
+          return res.send({
+            type: true,
+            token: token,
+            data: applicant
+          });
         });
       })
       .catch(function(error) {
-        return res.status(400).send('User does not exist');
+        return res.status(400).send('Username does not exist, please sign up for an account');
       });
   },
 

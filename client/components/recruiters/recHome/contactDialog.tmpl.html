@@ -1,46 +1,56 @@
 <div id="appModal">
-  <md-content  class="{{interestedApplicant.jobs_applicants.isInterested}}">
-    <md-tabs class="md-dynamic-height md-border-bottom">
-      <md-tab label="Resume">
-        <md-content class="md-padding" flex layout="column">
-          <div flex layout="row" layout-align="space-between">
-            <div flex="20">
-              <span><span class="subtitle">City: </span>{{interestedApplicant.city}}, {{interestedApplicant.state}}</span>
+  <div layout="row">
+    <div flex="5" layout="column" layout-align="center center">
+      <md-button class="hidden"></md-button>
+      <md-button aria-label="previous" class="navApps" flex ng-disabled="first" ng-click="previousApplicant()"><i class="material-icons">keyboard_arrow_left</i></md-button>
+    </div>
+    <div layout="column" flex="90">
+    <md-content flex class="{{interestedApplicant.jobs_applicants.isInterested}}">
+      <md-tabs class="md-dynamic-height md-border-bottom">
+        <md-tab label="Resume">
+          <md-content class="md-padding" flex layout="column">
+            <div flex layout="row" layout-align="space-between">
+              <div flex="20">
+                <span><span class="subtitle">City: </span>{{interestedApplicant.city}}, {{interestedApplicant.state}}</span>
+              </div>
+              <div flex="10" class="headerId">
+                <span><strong>ID: </strong>{{interestedApplicant.id}}<span>
+              </div>
             </div>
-            <div flex="10" class="headerId">
-              <span><strong>ID: </strong>{{interestedApplicant.id}}<span>
-            </div>
-          </div>
+              <div>
+                <h4>Education: </h4><p>{{interestedApplicant.education}}</p>
+              </div>
             <div>
-              <h4>Education: </h4><p>{{interestedApplicant.education}}</p>
+              <h4>Work Experience: </h4><p class="prewrap">{{interestedApplicant.work_exp}}</p><br>
+              <h4>Resume: </h4><p class="prewrap">{{interestedApplicant.resume}}</p>
             </div>
-          <div>
-            <h4>Work Experience: </h4><p class="prewrap">{{interestedApplicant.work_exp}}</p><br>
-            <h4>Resume: </h4><p class="prewrap">{{interestedApplicant.resume}}</p>
-          </div>
-        </md-content>
-      </md-tab>
-      <md-tab label="Contact">
-        <md-content class="md-padding">
-          <h2 class="md-headline">Send an email</h2>
-          <div layout="column">
-            <md-input-container>
-              <label>Message</label>
-              <textarea name="message" ng-model="contactMessage"></textarea>
-            </md-input-container>
-            <div layout="row" layout-align="start start">
-              <md-button class="md-raised md-primary" type="submit" ng-click="sendEmail(interestedApplicant.id)">Submit</md-button>
+          </md-content>
+        </md-tab>
+        <md-tab label="Contact">
+          <md-content class="md-padding">
+            <h2 class="md-headline">Send an email</h2>
+            <div layout="column">
+              <md-input-container>
+                <label>Message</label>
+                <textarea name="message" ng-model="contactMessage"></textarea>
+              </md-input-container>
+              <div layout="row" layout-align="start start">
+                <md-button class="md-raised md-primary" type="submit" ng-click="sendEmail(interestedApplicant.id)">Submit</md-button>
+              </div>
             </div>
-          </div>
-        </md-content>
-      </md-tab>
-    </md-tabs>
-  </md-content>
-  <div layout="row" layout-align="end center">
-    <md-button ng-disabled="first" class="md-raised md-primary" type="submit" ng-click="previousApplicant()">Previous applicant</md-button>
-    <md-button ng-disabled="last" class="md-raised md-primary" type="submit" ng-click="nextApplicant()">Next applicant</md-button>
-    <md-button class="md-raised md-primary" type="submit" ng-click="isInterested(false, interestedApplicant.id)">Not Interested</md-button>
-    <md-button class="md-raised md-primary" type="submit" ng-click="isInterested(true, interestedApplicant.id)">Interested</md-button>
+          </md-content>
+        </md-tab>
+      </md-tabs>
+    </md-content>
+    <div layout="row" layout-align="end center">
+      <md-button class="md-raised md-primary" type="submit" ng-click="isInterested(false, interestedApplicant.id)">Not Interested</md-button>
+      <md-button class="md-raised md-primary" type="submit" ng-click="isInterested(true, interestedApplicant.id)">Interested</md-button>
+    </div>
+    </div>
+    <div flex="5" layout="column" layout-align="center center">
+      <md-button class="hidden"></md-button>
+      <md-button aria-label="next"class="navApps" flex ng-disabled="last" ng-click="nextApplicant()"><i class="material-icons">keyboard_arrow_right</i></md-button>
+    </div>
   </div>
 </div>
 

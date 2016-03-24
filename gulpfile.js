@@ -19,8 +19,9 @@ var libraries = [
   './node_modules/angular-animate/angular-animate.min.js',
   './node_modules/angular-material/angular-material.js',
   './node_modules/angular-aria/angular-aria.js',
-  './node_modules/ng-dialog/js/ngDialog.min.js'
-];
+  './node_modules/ng-dialog/js/ngDialog.min.js',
+  './node_modules/angular-scroll/angular-scroll.min.js'
+  ];
 
 var stylesheets = [
   './node_modules/ng-dialog/css/ngDialog.min.css',

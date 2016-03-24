@@ -1,7 +1,7 @@
 angular.module('evenhire.recNewAcc', [])
 
   .controller('RecNewAccController', ['$scope', '$state', '$http', 'Recruiter', '$window', 'Auth', function($scope, $state, $http, Recruiter, $window, Auth) {
-
+    $scope.message = '';
     $scope.recruiter = {};
 
     $scope.createRecAcc = function() {
@@ -9,6 +9,7 @@ angular.module('evenhire.recNewAcc', [])
       Auth.signUp($scope.recruiter, 'recruiter')
       .then(function(data) {
         if (!data.type) {
+          $scope.message = 'Username already exists';
           console.log('User already exists', data.data);
         } else {
           $window.localStorage.setItem('evenhire', data.token);

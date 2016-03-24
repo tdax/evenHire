@@ -73,14 +73,14 @@ module.exports = {
     Models.Recruiter.findOne({ where: {username: req.body.username }})
       .then(function(recruiter) {
         recruiter.verifyPassword(req.body.password, function(err, isVerified) {
+          //Wrong password
+          if (!(isVerified)) {
+            return res.status(400).send('You have entered an invalid username or password');
+          }
           //Error in verifying
           if (err) {
-            console.log('error in recruiterController');
             return res.status(400).send('Error in verifying password');
           }
-          if (!(isVerified)) {
-            return res.status(400).send('Password does not match');
-          } else {
             var token = authUtils.issueToken(recruiter.id, 'recruiter');
             console.log("Signin successful");
             return res.send({
@@ -88,12 +88,11 @@ module.exports = {
               token: token,
               data: recruiter
             });
-          }
         });
       })
       .catch(function(error) {
         console.log('This user does not exist')
-        return res.status(400).send('User does not exist');
+        return res.status(400).send('Username does not exist, please sign up for an account');
       });
   },
 

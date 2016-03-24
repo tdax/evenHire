@@ -24,6 +24,8 @@ angular.module('evenhire.allJobs', [])
     $scope.clearAll = function() {
       $scope.cityFilter = [];
       $scope.levelFilter = [];
+      $scope.jobTypeFilter = [];
+      $scope.industryFilter = [];
     };
 
     $scope.getAllJobs = function() {

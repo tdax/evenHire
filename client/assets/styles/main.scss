@@ -1,4 +1,4 @@
-$smallSubtext: rgb(140, 140, 140);
+$grey: rgb(140, 140, 140);
 $legendTitle: #3F51B5;
 $red: #FFDCDC;
 $green: rgba(0, 151, 0, 0.38);
@@ -8,8 +8,17 @@ body {
   font-family: 'Roboto', 'Arial', 'sans-serif';
 }
 
+.grey {
+  color: $grey;
+}
+
 .prewrap {
   white-space: pre-wrap;
+}
+
+.noMargins {
+  margin: 0px;
+  padding: 0px;
 }
 
 // MAIN HEADER
@@ -59,6 +68,14 @@ div#appModal {
   }
   md-content.false {
     background-color: $red;
+  }
+  button.hidden {
+    min-height: 0px;
+  }
+  button.navApps {
+    @extend .noMargins;
+    max-height: 150px;
+    min-width: 50px;
   }
 }
 
@@ -116,7 +133,7 @@ div#jobSubhead {
     padding: 0px;
   }
   span.smallSubtext {
-    color: $smallSubtext;
+    @extend .grey;
     cursor: pointer;
   }
 }
@@ -126,12 +143,11 @@ div#jobsBody {
 }
 
 // Animations
-.ng-hide-add, .ng-hide-remove {
+.animate.ng-hide-add, .animate.ng-hide-remove {
     -webkit-transition:all linear 0.3s;
     -moz-transition:all linear 0.3s;
     -o-transition:all linear 0.3s;
     transition: all linear 0.3s;
-    display: block !important;
 }
 .animate {
   opacity: 1;
@@ -168,7 +184,7 @@ div.authForm {
     margin: 0px;
   }
   span.subtext {
-    color: $smallSubtext;
+    @extend .grey;
   }
 }
 

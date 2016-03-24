@@ -34,7 +34,9 @@
         <md-input-container flex>
           <label>Username</label>
           <input type="text" name="username" ng-model="applicant.username" required>
+          <span style="color:red">{{message}}</span>
         </md-input-container>
+
         <md-input-container flex>
           <label for="newPassword">Password</label>
           <input type="password" name="newPassword" ng-model="applicant.password.new" ng-model-options="{ updateOn: 'blur' }" required minlength="8">

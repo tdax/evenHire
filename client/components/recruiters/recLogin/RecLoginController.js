@@ -2,7 +2,7 @@ angular.module('evenhire.recLogin', [])
 
   .controller('RecLoginController', ['$scope','$state', '$http', 'Recruiter', '$window', 'Auth', 'ngDialog', function($scope, $state, $http, Recruiter, $window, Auth, ngDialog) {
     $scope.user = {};
-
+    $scope.message = ''
     $scope.closeDialog = function() {
       ngDialog.close();
     };
@@ -11,6 +11,7 @@ angular.module('evenhire.recLogin', [])
       Auth.login($scope.user, 'recruiter')
       .then(function(data) {
         if (data.status === 400) {
+          $scope.message = data.data;
           console.log('error!', data.data);
         } else {
           $window.localStorage.setItem('evenhire', data.token);
