@@ -1,8 +1,9 @@
 $grey: rgb(140, 140, 140);
 $legendTitle: #3F51B5;
-$red: #FFDCDC;
-$green: rgba(0, 151, 0, 0.38);
+$red: #FEE7E7;
+$green: #e7fee7;
 $dialogColor: #fff;
+$indigo: rgb(63,81,181);
 
 body {
   font-family: 'Roboto', 'Arial', 'sans-serif';
@@ -21,17 +22,29 @@ body {
   padding: 0px;
 }
 
-// MAIN HEADER
+//==============================-
+//MAIN HEADER
+//===============================
+
+img#logo {
+  height:35px;
+  margin-right: 4px;
+}
 div#menuHome {
+  height: 75%;
   cursor: pointer;
   h2 {
     font-size: 24px;
     font-weight: 900;
     letter-spacing: 1px;
+    color: white;
   }
 }
 
+//===============================
 // HOME
+//===============================
+
 div#hero {
   color: #fff;
   background: linear-gradient(rgba(20,20,20, .75), rgba(20,20,20, .75)), url('/dist/imgs/evenhire_bckgrnd.jpg');
@@ -41,7 +54,8 @@ div#hero {
 
 // NG DIALOG
 .ngdialog.ngdialog-theme-default .ngdialog-content {
-    width: 1200px;
+    width: 85%;
+    min-width:75%;
     div {
       md-tab-content {
         span.subtitle {
@@ -61,7 +75,11 @@ div.md-select-menu-container.md-active.md-clickable {
   z-index: 99999;
 }
 
-//NG DIALOG REVIEW APPLICANTS
+//===============================
+// NG DIALOG
+//===============================
+
+// REVIEW APPLICANTS
 div#appModal {
   md-content.true {
     background-color: $green;
@@ -83,6 +101,9 @@ div#appModal {
 
 md-card {
   margin: 14px 8px;
+  md-card-title {
+    padding-top: 7px;
+  }
   md-card-title-text {
     span.md-subhead {
       line-height: 19px;
@@ -102,19 +123,34 @@ md-card {
     }
   }
 }
-md-card.true {
-  background-color: $green;
-}
-md-card.false {
-  background-color: $red;
-}
 
 md-card-content#applicantCard {
 
 }
+//===============================
+// REC HOME
+//===============================
 
-// JOB POSTINGS IN REC HOME
-div.recHome {
+div#recHomeBody {
+  padding-top: 0px;
+  span#messageToFade {
+    margin-top: 30%;
+  }
+}
+
+span.notify {
+  color: $indigo;
+}
+
+// JOB POSTINGS
+div#recHome {
+  min-height: 1200px;
+  background-color: rgba(238, 238, 238, 0.61);
+}
+div#jobSide {
+  md-card {
+    margin-left: 2px;
+  }
   md-card-title {
     padding: 16px 16px 16px;
     span.md-subhead {
@@ -135,30 +171,46 @@ div#jobSubhead {
   span.smallSubtext {
     @extend .grey;
     cursor: pointer;
+    position: relative;
+    top: 8px;
+    padding-right: 3px;
   }
 }
 
-div#jobsBody {
-  padding-top: 0px;
+// APPLICANT LIST
+div#applicantSide {
+  md-card-content {
+    p {
+      margin-bottom: 0px;
+    }
+  }
 }
 
-// Animations
-.animate.ng-hide-add, .animate.ng-hide-remove {
-    -webkit-transition:all linear 0.3s;
-    -moz-transition:all linear 0.3s;
-    -o-transition:all linear 0.3s;
-    transition: all linear 0.3s;
+md-card.true {
+  background-color: $green;
 }
-.animate {
-  opacity: 1;
+md-card.false {
+  background-color: $red;
+}
+div#applicantFilters {
+  span {
+    padding-left: 5px;
+  }
+  button.md-button {
+    margin-bottom: 0px;
+  }
 }
 
-.animate.ng-hide {
-  opacity: 0;
+// NEW JOB POSTING
+div.radioButton {
+  color: #BDBDBD;
 }
 
+//===============================
+// APPLICANT HOME
+//===============================
 
-// CONTINUED.. Sidebar styling
+// ALL JOBS SIDEBAR
 #jobFilterColumn {
   div {
     fieldset.standard {
@@ -177,6 +229,24 @@ div#jobsBody {
     }
   }
 }
+// ANIMATIONS
+.animate.ng-hide-add, .animate.ng-hide-remove {
+    -webkit-transition:all linear 0.3s;
+    -moz-transition:all linear 0.3s;
+    -o-transition:all linear 0.3s;
+    transition: all linear 0.3s;
+}
+.animate {
+  opacity: 1;
+}
+
+.animate.ng-hide {
+  opacity: 0;
+}
+
+//===============================
+// LOGIN / SIGNUP FORMS
+//===============================
 
 // AUTH SIGN IN WITH USERNAME AND PASSWORDS
 div.authForm {

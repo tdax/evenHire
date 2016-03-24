@@ -1,10 +1,24 @@
-<div class="md-padding recHome">
-  <h2 class="md-headline">Welcome {{companyName}}!</h2>
-  {{message}}
-  <md-button class="md-raised" ng-click="newJobModal()">Post a job</md-button>
-  <h3 class="md-title">Your job listings:</h3>
-  <div flex layout="row">
-    <div flex="40">
+<div class="md-padding" id="recHome">
+  <div flex layout-align="space-between" layout="row">
+    <div flex>
+      <span class="md-headline">Welcome {{companyName}}!</span><span class="notify">{{message}}</span>
+    </div>
+    <div flex layout="row" layout-align="end start">
+      <md-button class="md-raised md-primary" ng-click="newJobModal()">Post a job</md-button>
+    </div>
+  </div>
+  <div layout="row" id="applicantFilters" layout-align="space-between">
+    <div layout="column" layout-align="end end">
+      <span class="md-title">Your job listings:</span>
+    </div>
+    <div ng-show="!selectJobPrompt" flex layout="row" layout-align="end end">
+      <md-button ng-click="newFilter={isInterested: null}">New</md-button>
+      <md-button ng-click="newFilter={isInterested: true}">Interested</md-button>
+      <md-button ng-click="newFilter={isInterested: undefined}">Show All</md-button>
+    </div>
+  </div>
+  <div id="recHomeBody" flex layout="row">
+    <div flex="40" id="jobSide">
       <md-card ng-repeat="job in postedJobs.results">
         <md-card-title>
           <md-card-title-text>
@@ -31,30 +45,30 @@
         </md-card-content>
         <md-card-actions layout="row" layout-align="end center">
           <md-button ng-click="showJobDetails=!showJobDetails">View more</md-button>
-          <md-button ng-click="getApplicants(job.id, job); scrollToTop()">Show applicants</md-button>
+          <md-button ng-click="getApplicants(job.id, job)">Show applicants</md-button>
         </md-card-actions>
       </md-card>
     </div>
-      <div flex="60" layout="column" layout-align="start">
-        <div class="animate" flex="20" ng-show="selectJobPrompt" layout="row" layout-align="center start">
-          <h4 class="grey">Select a job to view applicants</h4>
-        </div>
-        <md-card class="{{applicant.jobs_applicants.isInterested}}" ng-repeat="applicant in applicantsToView">
-          <md-card-content id="applicantCard">
-            <div layout="row" layout-align="space-between">
-              <div flex="20">
-                <h4>ID Number: </h4><p>{{applicant.id}}</p><br>
-              </div>
-              <div flex="20">
-                <h4>City: </h4><p>{{applicant.city}}, {{applicant.state}}</p><br>
-              </div>
-            </div>
-            <h4>Education: </h4><p class="prewrap">{{applicant.education}}</p>
-          </md-card-content>
-          <md-card-actions layout="row" layout-align="end center">
-            <md-button class="md-raised" ng-click="contactApplicantModal($index)">{{(applicant.jobs_applicants.contacted) ? 'Emailed' : 'View more'}}</md-button>
-          </md-card-actions>
-        </div>
+    <div id="applicantSide" flex="60" layout="column" layout-align="start">
+      <div class="animate" flex="20" ng-show="selectJobPrompt" layout="row" layout-align="center start">
+        <span id="messageToFade" class="grey">Select a job to view applicants</span>
       </div>
+      <md-card class="{{applicant.jobs_applicants.isInterested}}" ng-repeat="applicant in applicantsToView | filter: {jobs_applicants: newFilter}">
+        <md-card-content id="applicantCard">
+          <div layout="row" layout-align="space-between">
+            <div flex="20">
+              <h4>ID Number: </h4><p>{{applicant.id}}</p><br>
+            </div>
+            <div flex="20">
+              <h4>City: </h4><p>{{applicant.city}}, {{applicant.state}}</p><br>
+            </div>
+          </div>
+          <h4>Education: </h4><p class="prewrap">{{applicant.education}}</p>
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button class="md-raised" ng-click="contactApplicantModal($index)">{{(applicant.jobs_applicants.contacted) ? 'Emailed' : 'View more'}}</md-button>
+        </md-card-actions>
+      </md-card>
     </div>
+  </div>
 </div>

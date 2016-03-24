@@ -22,16 +22,43 @@ We used a dotenv npm package to configure our development variables. Create a .e
 - AngularJS
 - NodeJS/Express
 - Postgres
+- Sequelize
 - Karma
-- Jasmine
+- Mocha
+- Chai
+- Sinon
 - Gulp
 - SASS
 
 ## Features
-- Bullet
+- General Features
+  - User authentication for recruiters and applicants
+- Applicant Features
+  - Obtain list of jobs available
+    - Ordered as most recent posted first
+  - Filter available jobs list
+    - By location
+    - By Job Type
+    - By Career Level
+    - By Industry
+    - By Keyword
+- Recruiter Features
+  - Post new jobs
+  - View all jobs posted by recruiter
+  - View applicants to particular jobs
+    - Applicants are color coded
+      - Red: Recruiter is not interested in applicant
+      - Green: Recruiter is interested in applicant
+    - Contact button changes to say "emailed" after recruiter has emailed applicant
+
 
 ## Future Features
-- Bullet
+- General Features
+  - 
+- Applicant Features
+  - Let users know if they've already applied to a particular job
+- Recruiter Features
+ - Remove filled jobs from job listing
 
 ## Contributing
 Please refer to the [CONTRIBUTING.md](docs/CONTRIBUTING.md) file to see how to contribute to our project.
@@ -51,6 +78,7 @@ gulp tests
 
 ## Team
 We are a team of 4 full-stack software engineers. If you have any questions, please feel free to contact us!
+
 Thomas Sorensen | [Github](https://github.com/tps-80)
 
 Xavier Hayeck | [Github](https://github.com/xhayeck)

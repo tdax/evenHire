@@ -1,0 +1,64 @@
+<div layout="row">
+  <div flex>
+    <h2 class="md-headline">Edit your profile</h2>
+    <md-content id="appNewAccountForm">
+    <form name="appNewAccountForm">
+      <div layout="row" layout-xs="column">
+        <md-input-container flex="30">
+          <label>First Name</label>
+          <input type="text" name="firstName" ng-model="loggedInUser.first_name" required>
+        </md-input-container>
+        <md-input-container flex="30">
+          <label>Last Name</label>
+          <input type="text" name="lastName" ng-model="loggedInUser.last_name" required>
+        </md-input-container>
+        <md-input-container flex="40">
+          <label>Email</label>
+          <input type="email" name="email" ng-model="loggedInUser.email" required>
+        </md-input-container>
+      </div>
+      <div layout="row">
+        <md-input-container flex="30">
+          <label>Username</label>
+          <input type="text" name="username" ng-model="loggedInUser.username" required>
+        </md-input-container>
+        <md-input-container flex="30">
+          <label>Password</label>
+          <input type="password" name="password" ng-model="loggedInUser.password"  required>
+        </md-input-container>
+        <md-input-container flex="30">
+          <label>City</label>
+          <input type="text" name="city" ng-model="loggedInUser.city" required></input>
+        </md-input-container>
+       <md-input-container flex="10">
+          <label>State</label>
+            <md-select ng-model="loggedInUser.state" flex>
+              <md-option ng-repeat="state in states" value="{{state.abbrev}}">
+                {{state.abbrev}}
+              </md-option>
+            </md-select>
+        </md-input-container>
+      </div>
+      <div layout="column">
+        <md-input-container>
+          <label>Education</label>
+          <textarea ng-model="loggedInUser.education" required></textarea>
+        </md-input-container>
+        <md-input-container>
+          <label>Work Experience</label>
+          <textarea rows="2" ng-model="loggedInUser.work_exp" required></textarea>
+        </md-input-container>
+        <md-input-container>
+          <label>Resume</label>
+          <textarea rows="3" type="text" ng-model="loggedInUser.resume" required></textarea>
+        </md-input-container>
+      </div>
+      <div layout="row" layout-align="end center">
+        <md-button class="md-raised md-primary" type="submit" ng-disabled="appNewAccountForm.$invalid" ng-click="saveUpdate(loggedInUser, currentUserType)">Save</md-button>
+      </div>
+      </form>
+    </md-content>
+  </div>
+</div>
+
+

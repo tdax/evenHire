@@ -1,7 +1,7 @@
 <div class="dialog-contents">
   <div>
     <h2 class="md-headline">Post a job</h2>
-    <md-content>
+    <md-content layout-padding>
       <form name="recJobPost">
         <div layout="column">
           <div layout="row" layout-xs="column">
@@ -32,16 +32,16 @@
               <input type="text" name="zipcode" ng-model="newJob.zipcode" required ng-pattern="/^[0-9]{5}$/" md-maxlength="5">
             </md-input-container>
           </div>
-          <div layout="row">
-            <md-input-container>
-              <label>Career level</label>
-              <md-select ng-model="newJob.career_level">
-                <md-option ng-repeat="level in careerLevels">
-                  {{level}}
-                </md-option>
-              </md-select>
-            </md-input-container>
-            <md-input-container>
+          <div layout="row" layout-xs="column" layout-align="space-between">
+            <div class="radioButton">
+              <span>Career level</span>
+              <md-radio-group layout="row" ng-mode="newJob.career_level">
+                <md-radio-button value="Entry-level">Entry-level</md-radio-button>
+                <md-radio-button value="Experienced">Experienced</md-radio-button>
+                <md-radio-button value="Manager">Manager</md-radio-button>
+              </md-radio-group>
+            </div>
+            <md-input-container flex="35">
               <label>Job Type</label>
               <md-select ng-model="newJob.job_type">
                 <md-option ng-repeat="jobType in jobTypes">
@@ -56,10 +56,12 @@
           </md-input-container>
           <md-input-container>
             <label>Qualifications</label>
-            <input type="text" name="qualifications" ng-model="newJob.qualifications" required>
+            <textarea ng-model="newJob.qualifications" rows="10" required></textarea>
           </md-input-container>
         </div>
+        <div layout="row" layout-align="end start">
           <md-button class="md-raised md-primary" type="submit" ng-disabled="recJobPost.$invalid" ng-click="postJob(); closeDialog()">Submit</md-button>
+        </div>
       </form>
     </md-content>
   </div>

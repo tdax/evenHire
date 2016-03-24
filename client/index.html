@@ -3,6 +3,7 @@
   <head>
     <metacontent="text/html; charset=UTF-8" />
     <title>EvenHire</title>
+    <link rel="shortcut icon" type-"image/x-icon" href="/favicon.ico"/>
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
           rel="stylesheet">
@@ -11,24 +12,29 @@
     <script src="./dist/all.min.js"></script>
   </head>
   <body id="body">
-    <md-toolbar>
-      <div class="md-toolbar-tools" layout-sm="column" layout-align="space-between">
-        <div id="menuHome" ui-sref="home" layout="row" layout-align="start center">
-          <h2>EvenHire</h2>
-        </div>
-        <div layout="row" layout-align="end center">
-          <div layout="row" layout-align="end center">
-            <md-button ui-sref="recruiters">Find Talent</md-button>
+    <div layout="column">
+      <md-toolbar>
+        <div class="md-toolbar-tools" layout-sm="column" layout-align="space-between">
+          <div id="menuHome" ui-sref="home" layout="row" layout-align="start end">
+            <img id="logo" src="./dist/imgs/logo-icon-white-resized.png">
+            <h2>EvenHire</h2>
           </div>
           <div layout="row" layout-align="end center">
-            <md-button ui-sref="allJobs">View Jobs</md-button>
-          </div>
-          <div layout="row" layout-align="end center" ng-controller="AuthController">
-            <md-button ng-click="logOut()">Logout</md-button>
+            <div layout="row" layout-align="end center">
+              <md-button ui-sref="recruiters">Find Talent</md-button>
+            </div>
+            <div layout="row" layout-align="end center">
+              <md-button ui-sref="allJobs">View Jobs</md-button>
+            </div>
+            <div layout="row" layout-align="end center" ng-controller="AuthController">
+              <md-button ng-click="logOut()">Logout</md-button>
+            </div>
           </div>
         </div>
-      </div>
-    </md-toolbar>
-    <div ui-view></div>
+      </md-toolbar>
+      <md-content flex>
+        <div ui-view></div>
+      </md-content>
+    </div>
   </body>
 </html>

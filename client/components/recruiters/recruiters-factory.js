@@ -19,6 +19,20 @@ angular.module('evenhire.recruiters.factory', [])
       });
     };
 
+    recruiter.getApplicants = function(jobId) {
+      return $http({
+        method: 'POST',
+        url: 'api/recruiter/getApplicants',
+        data: {jobId: jobId}
+      })
+      .then (function(data) {
+        console.log('in factory', data);
+        return data.data;
+      }, function(err) {
+        console.log('Error in reaching server. Error: ', err);
+      });
+    };
+
     recruiter.getPostedJobs = function() {
       return $http({
         method: 'GET',
@@ -30,20 +44,6 @@ angular.module('evenhire.recruiters.factory', [])
       }, function(err) {
         console.log('error in getting all posted jobs');
         return err;
-      });
-    };
-
-    recruiter.grabApplicants = function(jobId) {
-      return $http({
-        method: 'POST',
-        url: 'api/recruiter/getApplicants',
-        data: {jobId: jobId}
-      })
-      .then (function(data) {
-        console.log('in factory', data);
-        return data.data;
-      }, function(err) {
-        console.log('Error in reaching server. Error: ', err);
       });
     };
 

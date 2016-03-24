@@ -27,4 +27,5 @@ sequelize.authenticate()
 });
 //Export our configured instance of our Heroku db
 module.exports.db = sequelize;
+module.exports.sequelize = Sequelize;
 
