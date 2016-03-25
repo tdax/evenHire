@@ -1,7 +1,7 @@
 <div class="md-padding" id="recHome">
   <div flex layout-align="space-between" layout="row">
     <div flex>
-      <span class="md-headline">Welcome {{companyName}}!</span><span class="notify">{{message}}</span>
+      <span class="md-headline">Welcome {{companyName}}</span><span class="notify">{{message}}</span>
     </div>
     <div flex layout="row" layout-align="end start">
       <md-button class="md-raised md-primary" ng-click="newJobModal()">Post a job</md-button>
@@ -55,12 +55,12 @@
       </div>
       <md-card class="{{applicant.jobs_applicants.isInterested}}" ng-repeat="applicant in applicantsToView | filter: {jobs_applicants: newFilter}">
         <md-card-content id="applicantCard">
-          <div layout="row" layout-align="space-between">
-            <div flex="20">
-              <h4>ID Number: </h4><p>{{applicant.id}}</p><br>
+          <div layout="row" layout-align="space-between" class="bottomSpacing">
+            <div flex="30" layout="row" layout-align="start center">
+              <h4 class="marginRight">ID Number:</h4><p>{{applicant.id}}</p>
             </div>
-            <div flex="20">
-              <h4>City: </h4><p>{{applicant.city}}, {{applicant.state}}</p><br>
+            <div flex="30" layout="row" layout-align="end center">
+              <h4 class="marginRight">City:</h4><p>{{applicant.city}}, {{applicant.state}}</p>
             </div>
           </div>
           <h4>Education: </h4><p class="prewrap">{{applicant.education}}</p>

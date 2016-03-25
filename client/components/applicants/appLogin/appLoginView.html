@@ -1,27 +1,29 @@
-<div layout="row" layout-align="center center">
-  <div class="authForm" flex="50">
+<div class="loginbckgd" layout="row" layout-align="end start">
+  <div flex="40" layout="row" layout-align="center center">
+    <div class="authForm" flex>
     <h2 class="md-headline">Applicants Login</h2>
-    <form>
-      <div layout-align="column">
-        <div flex layout="row">
-          <md-input-container flex="50">
+      <form flex>
+        <div layout="column" layout-align="start start">
+          <md-input-container flex="100">
             <label>Username</label>
             <input type="text" ng-model="user.username" required/>
-            <span style="color:red">{{message}}</span>
+            <span class="warn">{{message}}</span>
           </md-input-container>
-          <md-input-container flex="50">
+          <md-input-container flex="100">
             <label>Password</label>
             <input type="password" ng-model="user.password" required/>
           </md-input-container>
-        </div>
-        <div layout="row" flex layout-align="space-between">
-          <div flex layout="column">
-            <span class="md-caption subtext">Don't have an Evenhire applicant account? <a ui-sref="appNewAcc">Sign up</a><br>
-            <a href="" ng-click="forgotPassword()">Forgot your password?</a></span>
+          <div flex>
+            <span class="md-caption subtext">Don't have an Evenhire applicant account? <a ui-sref="appNewAcc">Sign up</a></span>
           </div>
-          <md-button class="md-raised md-primary" type="submit" ng-click="logIn()">Submit</md-button>
+          <div flex>
+            <span class="md-caption subtext"><a href="" ng-click="forgotPassword()">Forgot your password?</a></span>
+          </div>
+          <div flex layout="row" layout-align="start start">
+            <md-button class="md-raised md-primary" type="submit" ng-click="logIn()">Submit</md-button>
+          </div>
         </div>
-      </div>
-    </form>
+      </form>
+    </div>
   </div>
 </div>

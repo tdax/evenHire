@@ -33,6 +33,18 @@ span.warn {
   font-size: 11px;
 }
 
+.bottomSpacing {
+  margin-bottom: 10px;
+}
+
+.topSpacing {
+  margin-top: 10px;
+}
+
+.marginRight {
+  margin-right: 8px;
+}
+
 //==============================-
 //MAIN HEADER
 //===============================
@@ -104,7 +116,7 @@ div#appModal {
   }
   button.navApps {
     @extend .noMargins;
-    max-height: 300px;
+    max-height: 400px;
     min-width: 50px;
   }
 }
@@ -112,6 +124,7 @@ div#appModal {
 //JOB CARDS (IN VIEW ALL JOBS AND RECRUITER HOME)
 
 md-card {
+  overflow: hidden;
   border-radius: 8px;
   margin: 14px 8px;
   md-card-title {
@@ -235,6 +248,10 @@ div#appHome {
   min-height:1200px;
 }
 
+span.applied {
+  color: #1222C9;
+}
+
 // ALL JOBS SIDEBAR
 #jobFilterColumn {
   div {
@@ -256,6 +273,7 @@ div#appHome {
     }
   }
 }
+
 // ANIMATIONS
 .animate.ng-hide-add, .animate.ng-hide-remove {
     -webkit-transition:all linear 0.3s;
@@ -285,6 +303,13 @@ div.authForm {
   }
 }
 
+div.loginbckgd {
+  color: #fff;
+  background: linear-gradient(rgba(20,20,20, .55), rgba(20,20,20, .55)), url('/dist/imgs/networking-bckgrnd.jpg');
+  background-size: cover;
+  height: 500px;
+}
+
 // AUTH CREATE AN ACCOUNT AS APPLICANT
 form.signupForm {
     md-input-container {
@@ -295,7 +320,7 @@ form.signupForm {
 // FORGOT PASSWORD
 div#ngdialog1.ngdialog.ngdialog-theme-default, div#ngdialog2.ngdialog.ngdialog-theme-default {
   div.ngdialog-content {
-  width: 60%;
+  width: 70%;
   min-width: 50%;
   }
 }

@@ -79,24 +79,29 @@
           <md-card-content>
             <div layout="row" layout-xs="column" layout-align="space-between">
               <div flex="20">
-                <h4>Industry: </h4><p>{{job.industry}}</p>
-              </div>
-              <div flex="20">
                 <h4>Job Type: </h4><p>{{job.job_type}}</p>
               </div>
               <div flex="20">
                 <h4>Career Level: </h4><p>{{job.career_level}}</p>
               </div>
+              <div flex="20">
+                <h4>Industry: </h4><p>{{job.industry}}</p>
+              </div>
             </div>
-            <div ng-show="showJobDetails">
-            <h4>Description: </h4><p>{{job.description}}</p>
-            <h4>Qualifications: </h4><p>{{job.qualifications}}</p>
+            <div class="animate" ng-show="showJobDetails">
+              <h4 class="bottomSpacing topSpacing">Description: </h4><p>{{job.description}}</p>
+              <h4 class="topSpacing bottomSpacing">Qualifications: </h4><p>{{job.qualifications}}</p>
             </div>
           </md-card-content>
-          <md-card-actions layout="row" layout-align="end center">
-            <md-button flex="90" ng-click="showJobDetails=!showJobDetails"><span ng-show="!showJobDetails">View more</span><span ng-show="showJobDetails">Show less</span></md-button>
-            <md-button flex="10" class="md-primary md-raised" ng-click="submitApplication(job.id)">Apply</md-button>
-            <span ng-show="applied[job.id]" style="color: blue">Thanks for applying {{thankYouName}}!</span>
+          <md-card-actions layout="column">
+            <div flex="20" layout="row" layout-align="end center">
+              <span ng-show="applied[job.id]" class="md-caption applied">Thanks for applying {{thankYouName}}!</span>
+            </div>
+            <div layout="row" layout-align="end center">
+                <md-button flex="90" ng-click="showJobDetails=!showJobDetails"><span ng-show="!showJobDetails">View more</span><span ng-show="showJobDetails">Show less</span>
+              </md-button>
+              <md-button flex="10" class="md-primary md-raised" ng-click="submitApplication(job.id)">Apply</md-button>
+            </div>
           </md-card-actions>
         </md-card>
       </md-content>
