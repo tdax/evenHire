@@ -97,6 +97,7 @@ module.exports = {
   },
 
   postJob: function(req, res) {
+    console.log(req.body.career_level);
     if (!req.headers['x-access-token']) {
       return res.status(500).send('Not logged in');
     }

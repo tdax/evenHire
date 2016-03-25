@@ -61,6 +61,13 @@ angular.module('evenhire.recruiters', ['duScroll'])
       });
   };
 
+  $scope.renderEmailedOrNot = function(haveEmailed) {
+    if (haveEmailed) {
+      return '<i class="material-icons">&#xE5CA;</i>';
+    }
+    return 'Contact';
+  };
+
   $scope.getApplicants = function(jobId, jobObj) {
     $scope.scrollToTop();
     $scope.newFilter = {isInterested: undefined}

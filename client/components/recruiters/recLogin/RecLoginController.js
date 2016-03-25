@@ -25,7 +25,7 @@ angular.module('evenhire.recLogin', [])
         template: './components/recruiters/recLogin/recForgetPassword.tmpl.html',
         controller: 'RecLoginController',
         className: 'ngdialog-theme-default',
-        closeByDocument: false,
+        closeByDocument: true,
         scope: $scope
       });
     };

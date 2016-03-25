@@ -3,34 +3,41 @@
     <h2 class="md-headline">Recruiters Create an Account</h2>
     <md-content>
     <form name="recSignup">
-      <md-input-container>
-        <label>Username</label>
-        <input type="text" name="username" ng-model="recruiter.username" required>
-        <span style="color:red">{{message}}</span>
-      </md-input-container>
-      <md-input-container>
-        <label for="newPassword">Password</label>
-        <input type="password" name="password" ng-model-options="{ updateOn: 'blur' }" ng-model="recruiter.password"  required minlength="8">
-        <span ng-show="recSignup.password.$dirty && recSignup.password.$invalid">Password must be 8 characters or longer.
-        </span>
-      </md-input-container>
-      <br>
-      <md-input-container>
-        <label for="verify_password">Verify Password</label>
-        <input type="password" name="verify_password" ng-model="recruiter.verify_password" ng-model-options="{ updateOn: 'blur' }" value-matches="recruiter.password" required >
-        <span ng-show="recSignup.verify_password.$dirty && recSignup.verify_password.$invalid">Passwords must match.
-        </span>
-      </md-input-container>
-      <br>
-      <md-input-container>
-        <label>Company Name</label>
-        <input type="text" name="name" ng-model="recruiter.name" required>
-      </md-input-container>
-      <md-input-container>
-        <label>Email</label>
-        <input required type="email" name="email" ng-pattern="/^.+@.+\..+$/" ng-model="recruiter.email">
-      </md-input-container>
-      <md-button class="md-raised md-primary" type="submit" ng-disabled="recSignup.$invalid" ng-click="createRecAcc()">Submit</md-button>
+      <div layout="column">
+        <div layout="row">
+          <md-input-container flex="50">
+            <label>Company Name</label>
+            <input type="text" name="name" ng-model="recruiter.name" required>
+          </md-input-container>
+          <md-input-container flex="50">
+            <label>Email</label>
+            <input required type="email" name="email" ng-pattern="/^.+@.+\..+$/" ng-model="recruiter.email">
+          </md-input-container>
+        </div>
+        <md-input-container>
+          <label>Username</label>
+          <input type="text" name="username" ng-model="recruiter.username" required>
+          <span class="warn">{{message}}</span>
+        </md-input-container>
+        <div layout="row">
+          <md-input-container flex="50">
+            <label for="newPassword">Password</label>
+            <input type="password" name="password" ng-model-options="{ updateOn: 'blur' }" ng-model="recruiter.password"  required minlength="8">
+            <span class="warn" ng-show="recSignup.password.$dirty && recSignup.password.$invalid">Password must be 8 characters or longer.
+            </span>
+          </md-input-container>
+          <md-input-container flex="50">
+            <label for="verify_password">Verify Password</label>
+            <input type="password" name="verify_password" ng-model="recruiter.verify_password" ng-model-options="{ updateOn: 'blur' }" value-matches="recruiter.password" required >
+            <span class="warn" ng-show="recSignup.verify_password.$dirty && recSignup.verify_password.$invalid">Passwords must match.
+            </span>
+          </md-input-container>
+        </div>
+      </div>
+      <div layout="row" layout-align="space-between">
+        <span class="md-caption grey">Already have a recruiter account? <a ui-sref="recLogin">Log in here</a></span>
+        <md-button class="md-raised md-primary" type="submit" ng-disabled="recSignup.$invalid" ng-click="createRecAcc()">Submit</md-button>
+      </div>
       </form>
     </md-content>
   </div>

@@ -44,7 +44,7 @@
           </div>
         </md-card-content>
         <md-card-actions layout="row" layout-align="end center">
-          <md-button ng-click="showJobDetails=!showJobDetails">View more</md-button>
+          <md-button ng-click="showJobDetails=!showJobDetails"><span ng-show="!showJobDetails">View more</span><span ng-show="showJobDetails">Show less</span></md-button>
           <md-button ng-click="getApplicants(job.id, job)">Show applicants</md-button>
         </md-card-actions>
       </md-card>
@@ -66,7 +66,8 @@
           <h4>Education: </h4><p class="prewrap">{{applicant.education}}</p>
         </md-card-content>
         <md-card-actions layout="row" layout-align="end center">
-          <md-button class="md-raised" ng-click="contactApplicantModal($index)">{{(applicant.jobs_applicants.contacted) ? 'Emailed' : 'View more'}}</md-button>
+          <md-button class="md-raised" ng-hide="!applicant.jobs_applicants.contacted" layout="row" layout-align="center center" ng-click="contactApplicantModal($index)"><i flex class="check material-icons">&#xE5CA;</i>Contacted</md-button>
+          <md-button class="md-raised" ng-hide="applicant.jobs_applicants.contacted" layout="row" layout-align="center center" ng-click="contactApplicantModal($index)">View More</md-button>
         </md-card-actions>
       </md-card>
     </div>

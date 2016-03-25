@@ -1,7 +1,9 @@
 $grey: rgb(140, 140, 140);
+$grey-background: rgba(238, 238, 238, 0.61);
 $legendTitle: #3F51B5;
-$red: #FEE7E7;
+$rejected: #FEE7E7;
 $green: #e7fee7;
+$redWarning: #E20505;
 $dialogColor: #fff;
 $indigo: rgb(63,81,181);
 
@@ -13,6 +15,10 @@ body {
   color: $grey;
 }
 
+.noOverflow {
+  overflow: hidden;
+}
+
 .prewrap {
   white-space: pre-wrap;
 }
@@ -20,6 +26,11 @@ body {
 .noMargins {
   margin: 0px;
   padding: 0px;
+}
+
+span.warn {
+  color: $redWarning;
+  font-size: 11px;
 }
 
 //==============================-
@@ -49,23 +60,28 @@ div#hero {
   color: #fff;
   background: linear-gradient(rgba(20,20,20, .75), rgba(20,20,20, .75)), url('/dist/imgs/evenhire_bckgrnd.jpg');
   background-size: cover;
-  height: 525px;
+  height: 450px;
 }
 
+
+//===============================
 // NG DIALOG
+//===============================
+
 .ngdialog.ngdialog-theme-default .ngdialog-content {
-    width: 85%;
-    min-width:75%;
-    div {
-      md-tab-content {
-        span.subtitle {
-          font-weight: 600;
-        }
-        div.headerId {
-          text-align: center;
-        }
+  top: -80px;
+  width: 85%;
+  min-width:75%;
+  div {
+    md-tab-content {
+      span.subtitle {
+        font-weight: 600;
+      }
+      div.headerId {
+        text-align: center;
       }
     }
+  }
 }
 html.ngdialog-open {
   overflow: visible;
@@ -75,24 +91,20 @@ div.md-select-menu-container.md-active.md-clickable {
   z-index: 99999;
 }
 
-//===============================
-// NG DIALOG
-//===============================
-
 // REVIEW APPLICANTS
 div#appModal {
   md-content.true {
     background-color: $green;
   }
   md-content.false {
-    background-color: $red;
+    background-color: $rejected;
   }
   button.hidden {
     min-height: 0px;
   }
   button.navApps {
     @extend .noMargins;
-    max-height: 150px;
+    max-height: 300px;
     min-width: 50px;
   }
 }
@@ -100,6 +112,7 @@ div#appModal {
 //JOB CARDS (IN VIEW ALL JOBS AND RECRUITER HOME)
 
 md-card {
+  border-radius: 8px;
   margin: 14px 8px;
   md-card-title {
     padding-top: 7px;
@@ -145,8 +158,9 @@ span.notify {
 // JOB POSTINGS
 div#recHome {
   min-height: 1200px;
-  background-color: rgba(238, 238, 238, 0.61);
+  background-color: $grey-background;
 }
+
 div#jobSide {
   md-card {
     margin-left: 2px;
@@ -172,13 +186,16 @@ div#jobSubhead {
     @extend .grey;
     cursor: pointer;
     position: relative;
-    top: 8px;
+    top: 17px;
     padding-right: 3px;
   }
 }
 
 // APPLICANT LIST
 div#applicantSide {
+  md-card {
+    margin-bottom: 4px;
+  }
   md-card-content {
     p {
       margin-bottom: 0px;
@@ -190,7 +207,7 @@ md-card.true {
   background-color: $green;
 }
 md-card.false {
-  background-color: $red;
+  background-color: $rejected;
 }
 div#applicantFilters {
   span {
@@ -201,6 +218,10 @@ div#applicantFilters {
   }
 }
 
+i.check {
+  color: #05C705;
+}
+
 // NEW JOB POSTING
 div.radioButton {
   color: #BDBDBD;
@@ -209,6 +230,10 @@ div.radioButton {
 //===============================
 // APPLICANT HOME
 //===============================
+div#appHome {
+  background-color: $grey-background;
+  min-height:1200px;
+}
 
 // ALL JOBS SIDEBAR
 #jobFilterColumn {
@@ -217,6 +242,8 @@ div.radioButton {
       border-style: solid;
       border-width: 1px;
       height: 100%;
+      background-color: white;
+      border-radius: 7px;
 
       legend {
         color: $legendTitle;
@@ -264,3 +291,12 @@ form.signupForm {
       margin: 0px;
     }
 }
+
+// FORGOT PASSWORD
+div#ngdialog1.ngdialog.ngdialog-theme-default, div#ngdialog2.ngdialog.ngdialog-theme-default {
+  div.ngdialog-content {
+  width: 60%;
+  min-width: 50%;
+  }
+}
+

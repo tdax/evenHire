@@ -10,7 +10,7 @@
         <md-tab label="Resume">
           <md-content class="md-padding" flex layout="column">
             <div flex layout="row" layout-align="space-between">
-              <div flex="20">
+              <div flex="60">
                 <span><span class="subtitle">City: </span>{{interestedApplicant.city}}, {{interestedApplicant.state}}</span>
               </div>
               <div flex="10" class="headerId">
@@ -47,7 +47,7 @@
       <md-button class="md-raised md-primary" type="submit" ng-click="isInterested(true, interestedApplicant.id)">Interested</md-button>
     </div>
     </div>
-    <div flex="5" layout="column" layout-align="center center">
+    <div flex="5" layout="column" layout-align="center center" class="noOverflow">
       <md-button class="hidden"></md-button>
       <md-button aria-label="next"class="navApps" flex ng-disabled="last" ng-click="nextApplicant()"><i class="material-icons">keyboard_arrow_right</i></md-button>
     </div>

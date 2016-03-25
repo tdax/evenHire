@@ -75,35 +75,36 @@ angular.module('evenhire.allJobs', [])
     };
 
     $scope.submitApplication = function(job_id) {
-      if(!Auth.getCurrentUserType()){
-        console.log("You need to login");
-        $state.go('appLogin');
-      } else if (Auth.getCurrentUserType() === 'recruiter') {
+      if (Auth.getCurrentUserType() !== 'applicant') {
         $scope.onlyApplicantCanApply();
         $state.go('appLogin');
       } else {
          Applicant.apply({job_id: job_id})
-            .then(function(factoryResponse) {
-              console.log("factoryResponse in alljobsController", factoryResponse);
-              if(factoryResponse.toString() === 'false') {
-                $scope.duplicateApplication();
-              } else {
-                $scope.thankYouName = factoryResponse.first_name;
-                $scope.applied[job_id] = true;
-              }
-            });
+          .then(function(factoryResponse) {
+            console.log("factoryResponse in alljobsController", factoryResponse);
+            if(factoryResponse.toString() === 'false') {
+              $scope.duplicateApplication();
+            } else {
+              $scope.thankYouName = factoryResponse.first_name;
+              $scope.applied[job_id] = true;
+            }
+          });
       }
     };
 
     $scope.showAppInfo = function() {
-      $scope.loggedInUser = Auth.getCurrentUser();
-      ngDialog.open({
-        template: './components/applicants/allJobs/applicantProfile.tmpl.html',
-        controller: 'AllJobsController',
-        className: 'ngdialog-theme-default',
-        closeByDocument: true,
-        scope: $scope
-      });
+      if(Auth.getCurrentUserType() !== 'applicant') {
+        $state.go('appLogin');
+      } else {
+        $scope.loggedInUser = Auth.getCurrentUser();
+        ngDialog.open({
+          template: './components/applicants/allJobs/applicantProfile.tmpl.html',
+          controller: 'AllJobsController',
+          className: 'ngdialog-theme-default',
+          closeByDocument: true,
+          scope: $scope
+        });
+      }
     };
 
     $scope.toggle = function(item, list) {

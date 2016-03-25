@@ -65,7 +65,7 @@ describe('Recruiters', function() {
         .expect(400)
         .end(function(err, res) {
           expect(res.error).to.exist;
-          expect(res.error.text).to.equal('User does not exist');
+          expect(res.error.text).to.equal('Username does not exist, please sign up for an account');
           done();
         });
     });
@@ -79,7 +79,7 @@ describe('Recruiters', function() {
         .send(data)
         .expect(400)
         .end(function(err, res) {
-          expect(res.error.text).to.equal('Password does not match');
+          expect(res.error.text).to.equal('You have entered an invalid username or password');
           done();
         });
     });
@@ -213,10 +213,11 @@ describe('Applicants', function() {
         .expect(400)
         .end(function(err, res) {
           expect(res.error).to.exist;
-          expect(res.error.text).to.equal('User does not exist');
+          expect(res.error.text).to.equal('Username does not exist, please sign up for an account');
           done();
         });
     });
+
     it('should return a user object, token and true when using correct credentials', function(done) {
       var data = {
         username: 'test',
@@ -250,23 +251,25 @@ describe('Applicants', function() {
         .expect(400)
         .end(function(err, res) {
           expect(res.error).to.exist;
-          expect(res.error.text).to.equal('Password does not match');
+          expect(res.error.text).to.equal('You have entered an invalid username or password');
           done();
         });
     });
   });
 
   describe('Applying for jobs', function() {
-    xit('Should not allow to apply for same job', function(done) {
+    it('Should not allow to apply for same job', function(done) {
       request(app)
         .post('/api/applicant/apply')
         .set('x-access-token', testApplicantToken)
         .send({job_id: 1})
         .end(function(err, res) {
           expect(res.body).to.exist;
+          expect(err).to.equal(null);
           // expect(res.body).to.have.property('id');
           done();
         });
     });
   });
+
 });

@@ -73,6 +73,7 @@ angular.module('evenhire.recruiters.factory', [])
       })
       .then(function(data) {
         return data.data;
+        console.log(data.data);
       }, function(err) {
         return err;
       });

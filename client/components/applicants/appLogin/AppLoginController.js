@@ -26,7 +26,7 @@ angular.module('evenhire.appLogin', [])
         template: './components/applicants/appLogin/appForgetPassword.tmpl.html',
         controller: 'AppLoginController',
         className: 'ngdialog-theme-default',
-        closeByDocument: false,
+        closeByDocument: true,
         scope: $scope
       });
     };
