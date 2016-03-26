@@ -11,7 +11,7 @@ angular.module('evenhire.applicants.factory', [])
       .then(function(data) {
         return data.data;
       }, function(err) {
-        console.log('error in getting jobs');
+        return err;
       });
     };
 
@@ -22,10 +22,9 @@ angular.module('evenhire.applicants.factory', [])
         data: applicationObject
       })
       .then(function(data) {
-        console.log('response from server is: ', data);
         return data.data;
       }, function(err) {
-        return err
+        return err;
       });
     };
 

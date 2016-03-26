@@ -17,7 +17,6 @@ module.exports = function(app) {
         });
       })
       .catch(function(err) {
-        console.log('error in authController.js', err);
         return res.send(err)
       });
   });
@@ -57,12 +56,9 @@ module.exports = function(app) {
     var userType = req.body.userType;
     var userEmail = req.body.userData.email;
     if (userType === 'applicant') {
-      console.log('looking for applicant', userEmail);
       Models.Applicant.findOne({ where: {email: userEmail }})
         .then(function(applicant) {
           var token = authUtils.issueToken(applicant.id, 'applicant');
-          console.log('token is:', token);
-          console.log('applicant is:', applicant.password)
           var email = {
             from: 'Even Hire' + ' < evenhire@gmail.com >',
             to: userEmail,
@@ -70,8 +66,6 @@ module.exports = function(app) {
             html: 'Dear ' + applicant.first_name + ',<br><br>We are sending this email because we received a request from you to change your password. If you did not make this request, please ignore this email. To change your password, click the link below.<br><br><a href="evenhire.herokuapp.com/#/resetPassword/' + token + '">Update Password</a><br/><br>Once you change your password,  be sure to keep it secure. Never reveal your password to anyone, and never respond to an email asking for your password information.<br><br><br>The Even Hire Team'
           };
           mailgun.messages().send(email, function(error, body) {
-            console.log('error in applicantcontroller sending email is, ', error);
-            console.log('the body response is', body);
             res.send({error: error, body: body});
           });
         })
@@ -79,13 +73,10 @@ module.exports = function(app) {
           return res.send(err);
         });
     } else {
-      console.log('looking for recruiter', req.body.userData.email);
       var userEmail = req.body.userData.email;
       Models.Recruiter.findOne({where: {email: userEmail}})
       .then(function(recruiter) {
         var token = authUtils.issueToken(recruiter.id, 'recruiter');
-        console.log('token is:', token);
-        console.log('recruiter is:', recruiter.password)
         var email = {
           from: 'Even Hire' + ' < evenhire@gmail.com >',
           to: userEmail,
@@ -93,8 +84,6 @@ module.exports = function(app) {
           html: 'Dear ' + recruiter.name + ',<br><br>We are sending this email because we received a request from you to change your password. If you did not make this request, please ignore this email. To change your password, click the link below.<br><br><a href="evenhire.herokuapp.com/#/resetPassword/' + token + '">Update Password</a><br/><br>Once you change your password,  be sure to keep it secure. Never reveal your password to anyone, and never respond to an email asking for your password information.<br><br><br>The Even Hire Team'
         };
         mailgun.messages().send(email, function(error, body) {
-          console.log('error in recrutercontroller sending email is, ', error);
-          console.log('the body response is', body);
           res.send({error: error, body: body});
         });
       })

@@ -54,7 +54,6 @@ angular.module('evenhire.recruiters', ['duScroll'])
   };
 
   $scope.contacted = function(applicantId) {
-    console.log("applicantId in contacted in RecHomeController", applicantId)
     Recruiter.contacted(true, $scope.currentJob.id, applicantId)
       .then(function(response) {
         console.log("response from Recruiter.contacted", response);
@@ -136,7 +135,6 @@ angular.module('evenhire.recruiters', ['duScroll'])
   };
 
   $scope.previousApplicant = function(applicantIndex, jobId, job) {
-    console.log('hi');
     Recruiter.getApplicants($scope.job.jobId)
     .then(function(applicants) {
       if ($scope.applicantIndex > 0) {
@@ -155,7 +153,6 @@ angular.module('evenhire.recruiters', ['duScroll'])
 
   $scope.scrollToTop = function() {
     var top = angular.element(document.getElementById('applicantFilters'));
-    // $document.scrollTop();
     $document.duScrollToElement(top, 0, 600);
   };
 
@@ -164,7 +161,6 @@ angular.module('evenhire.recruiters', ['duScroll'])
     var jobTitle = $scope.currentJob.title;
     Recruiter.sendEmail(email, jobTitle, $scope.companyName, $scope.companyEmail, $scope.contactMessage)
       .then(function(response) {
-        console.log(response);
         $scope.message = " - Email sent";
         $scope.contacted(applicantId);
         $scope.closeDialog();

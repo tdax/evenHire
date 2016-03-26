@@ -3,7 +3,6 @@
 var connectStrForTesting = process.env.DEV_DATABASE_URL;
 var connectStr = process.env.DATABASE_URL;
 if (process.env.NODE_ENV === 'test') {
-  console.log('in testing');
   connectStr = connectStrForTesting;
 }
 

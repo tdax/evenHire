@@ -12,7 +12,6 @@ angular.module('evenhire.recLogin', [])
       .then(function(data) {
         if (data.status === 400) {
           $scope.message = data.data;
-          console.log('error!', data.data);
         } else {
           $window.localStorage.setItem('evenhire', data.token);
           $state.go('recruiters');

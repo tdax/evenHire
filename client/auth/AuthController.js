@@ -9,12 +9,6 @@ angular.module('evenhire.auth', [])
     $scope.logOut = function() {
       Auth.signOut();
       $state.go('home');
-      console.log('signed out');
-    };
-
-    $scope.getUser = function() {
-      console.log('current user is: ', Auth.getCurrentUser());
-      console.log('current user type is: ', Auth.getCurrentUserType());
     };
 
     $scope.updatePassword = function() {
@@ -30,6 +24,6 @@ angular.module('evenhire.auth', [])
           } else {
             console.log('err :', data);
           }
-        })
+        });
     };
 }]);

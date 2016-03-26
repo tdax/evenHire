@@ -26,10 +26,9 @@ angular.module('evenhire.recruiters.factory', [])
         data: {jobId: jobId}
       })
       .then (function(data) {
-        console.log('in factory', data);
         return data.data;
       }, function(err) {
-        console.log('Error in reaching server. Error: ', err);
+        return err;
       });
     };
 
@@ -42,7 +41,6 @@ angular.module('evenhire.recruiters.factory', [])
         //data.data is an object with an array of job objects and an array of applicant counts
         return data.data;
       }, function(err) {
-        console.log('error in getting all posted jobs');
         return err;
       });
     };
@@ -58,7 +56,6 @@ angular.module('evenhire.recruiters.factory', [])
         }
       })
       .then(function(data) {
-        console.log(data);
         return data.data;
       }, function(err) {
         return err;
@@ -73,7 +70,6 @@ angular.module('evenhire.recruiters.factory', [])
       })
       .then(function(data) {
         return data.data;
-        console.log(data.data);
       }, function(err) {
         return err;
       });

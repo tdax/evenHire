@@ -10,7 +10,6 @@ angular.module('evenhire.appLogin', [])
           //if user is not authenticated
           if (data.status === 400) {
             $scope.message = data.data;
-            console.log('error! ', data.data);
           } else {
             $window.localStorage.setItem('evenhire', data.token);
             $state.go('allJobs');
@@ -32,7 +31,6 @@ angular.module('evenhire.appLogin', [])
     };
 
     $scope.sendEmail = function(loggedInUser, currentUserType) {
-      // console.log(loggedInUser, currentUserType);
       Auth.forgotPassword(loggedInUser, currentUserType)
       .then(function(data) {
         console.log(data.body.message);

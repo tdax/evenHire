@@ -41,7 +41,6 @@ module.exports = {
             return res.status(400).send('Error in verifying password');
           }
           var token = authUtils.issueToken(applicant.id, 'applicant');
-          console.log('Sign in successful');
           return res.send({
             type: true,
             token: token,
@@ -128,7 +127,6 @@ module.exports = {
           resume: req.body.resume
          })
         .then(function() {
-           console.log('applicant is :', applicant.dataValues);
            return res.send(applicant.dataValues);
         })
         .catch(function(err) {

@@ -63,7 +63,6 @@ angular.module('evenhire.allJobs', [])
       Auth.userUpdate(loggedInUser, userType)
       .then(function(data) {
         $scope.closeDialog();
-        console.log('saveUpdate is:', data);
       });
     };
 
@@ -74,7 +73,6 @@ angular.module('evenhire.allJobs', [])
       } else {
          Applicant.apply({job_id: job_id})
           .then(function(factoryResponse) {
-            console.log("factoryResponse in alljobsController", factoryResponse);
             if(factoryResponse.toString() === 'false') {
               $scope.alreadyApply[index] = true;
               $scope.applied[job_id] = false;

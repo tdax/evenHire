@@ -10,10 +10,8 @@ angular.module('evenhire.recNewAcc', [])
       .then(function(data) {
         if (!data.type) {
           $scope.message = 'Username already exists';
-          console.log('User already exists', data.data);
         } else {
           $window.localStorage.setItem('evenhire', data.token);
-          console.log('New recruiter id: ', data);
           $state.go('recruiters')
         }
         });

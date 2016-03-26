@@ -22,7 +22,7 @@ module.exports = {
               }
             })
             .catch(function(err) {
-              console.log('Error in counting applicants');
+              return err;
             });
         }
       })
@@ -46,16 +46,14 @@ module.exports = {
       .then(function(job) {
         job.getApplicants({joinTableAttributes: ['isInterested','contacted']})
           .then(function(applicants) {
-            console.log('applicants');
              res.send(applicants);
           })
           .catch(function(err) {
-            console.log('Error in finding applicants', err);
             res.send(err);
           });
       })
       .catch(function(error) {
-        res.send(error);
+        return res.send(error);
       });
   },
 
@@ -82,7 +80,6 @@ module.exports = {
             return res.status(400).send('Error in verifying password');
           }
             var token = authUtils.issueToken(recruiter.id, 'recruiter');
-            console.log("Signin successful");
             return res.send({
               type: true,
               token: token,
@@ -91,13 +88,11 @@ module.exports = {
         });
       })
       .catch(function(error) {
-        console.log('This user does not exist')
         return res.status(400).send('Username does not exist, please sign up for an account');
       });
   },
 
   postJob: function(req, res) {
-    console.log(req.body.career_level);
     if (!req.headers['x-access-token']) {
       return res.status(500).send('Not logged in');
     }
@@ -132,7 +127,6 @@ module.exports = {
       subject: req.body.jobTitle + ' position for ' + req.body.company,
       text: req.body.message
     };
-    console.log('email we want to send is: ', email);
     // mailgun.messages().send(email, function(error, body) {
     //   console.log('resonse from mail gun is, ', body);
     //   res.send(body);
@@ -186,7 +180,6 @@ module.exports = {
         });
       })
       .catch(function(err) {
-        console.log('Err: ', err);
         return res.status().send(err);
       })
   },
@@ -205,7 +198,6 @@ module.exports = {
         });
       })
       .catch(function(err) {
-        console.log('Err: ', err);
         return res.status(400).send(err);
       })
   }

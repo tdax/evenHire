@@ -14,10 +14,8 @@ angular.module('evenhire.appNewAcc', [])
         .then(function(data) {
           if (!data.type) {
             $scope.message = 'Username already exists';
-            console.log('User already exists', data.data);
           } else {
             $window.localStorage.setItem('evenhire', data.token);
-            console.log('NEW USER is :', data);
             $state.go('allJobs');
           }
         });
