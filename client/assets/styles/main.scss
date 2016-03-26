@@ -45,6 +45,16 @@ span.warn {
   margin-right: 8px;
 }
 
+button.bold {
+  span {
+    font-weight: 800;
+  }
+}
+
+.indigo {
+  color: $indigo;
+}
+
 //==============================-
 //MAIN HEADER
 //===============================
@@ -64,17 +74,54 @@ div#menuHome {
   }
 }
 
+md-toolbar {
+  span {
+    font-weight: 900;
+    letter-spacing: 0.5px;
+  }
+}
+//===============================
+// Typography
+//===============================
+
+.material-icons.md-18 { font-size: 18px; };
+.material-icons.md-24 { font-size: 24px; };
+.material-icons.md-36 { font-size: 36px; };
+.material-icons.md-48 { font-size: 48px; };
+
 //===============================
 // HOME
 //===============================
 
 div#hero {
   color: #fff;
-  background: linear-gradient(rgba(20,20,20, .75), rgba(20,20,20, .75)), url('/dist/imgs/evenhire_bckgrnd.jpg');
+  background: linear-gradient(rgba(20,20,20, .80), rgba(20,20,20, .80)), url('/dist/imgs/evenhire_bckgrnd.jpg');
   background-size: cover;
-  height: 450px;
+  height: 600px;
+  i {
+    cursor: pointer;
+  }
+  h3 {
+    @extend i;
+  }
+  a.md-button {
+    span {
+      font-weight: 900;
+      padding: 3px 14px;
+    }
+  }
 }
 
+div#about {
+  margin-bottom: 75px;
+  div {
+    text-align: center;
+  }
+  span {
+    font-size: 18px;
+    font: rgba(0, 0, 0, 0.64);
+  }
+}
 
 //===============================
 // NG DIALOG
@@ -113,10 +160,11 @@ div#appModal {
   }
   button.hidden {
     min-height: 0px;
+    margin: 0px;
+    padding: 0px;
   }
   button.navApps {
     @extend .noMargins;
-    max-height: 400px;
     min-width: 50px;
   }
 }
@@ -124,6 +172,7 @@ div#appModal {
 //JOB CARDS (IN VIEW ALL JOBS AND RECRUITER HOME)
 
 md-card {
+  box-shadow: 0 2px 3px 0 rgba(0,0,0,.2),0 1px 1px 0 rgba(0,0,0,.14),0 2px 1px -1px rgba(0,0,0,.12);
   overflow: hidden;
   border-radius: 8px;
   margin: 14px 8px;
@@ -246,6 +295,9 @@ div.radioButton {
 div#appHome {
   background-color: $grey-background;
   min-height:1200px;
+  a.md-button {
+    margin-left: 0px;
+  }
 }
 
 span.applied {
@@ -295,7 +347,12 @@ span.applied {
 
 // AUTH SIGN IN WITH USERNAME AND PASSWORDS
 div.authForm {
+  background-color: white;
+  color: black;
+  border-radius: 12px;
+  opacity: 0.9;
   md-input-container {
+    min-width: 100%;
     margin: 0px;
   }
   span.subtext {
@@ -307,7 +364,7 @@ div.loginbckgd {
   color: #fff;
   background: linear-gradient(rgba(20,20,20, .55), rgba(20,20,20, .55)), url('/dist/imgs/networking-bckgrnd.jpg');
   background-size: cover;
-  height: 500px;
+  min-height: 800px;
 }
 
 // AUTH CREATE AN ACCOUNT AS APPLICANT
@@ -320,7 +377,7 @@ form.signupForm {
 // FORGOT PASSWORD
 div#ngdialog1.ngdialog.ngdialog-theme-default, div#ngdialog2.ngdialog.ngdialog-theme-default {
   div.ngdialog-content {
-  width: 70%;
+  width: 80%;
   min-width: 50%;
   }
 }

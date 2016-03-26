@@ -1,11 +1,16 @@
 <div layout-padding id="appHome">
   <div layout="row" layout-align="space-between">
-    <div layout="row" layout-align="start center">
+    <div layout="column" layout-align="start start">
       <span class="md-headline">Job Postings</span>
-      <md-button ui-sref="recruiters">Post a job</md-button>
+      <md-button aria-label="Post a job" ui-sref="recruiters" class="md-primary">Post a job</md-button>
     </div>
     <div flex="20" layout="row" layout-align="end start">
-      <md-button flex class="md-primary" ng-click="showAppInfo()">View your profile</md-button>
+      <md-button layout="column" layout-align="center center" aria-label="Profile" class="md-fab md-accent" ng-click="showAppInfo()">
+        <i  class="material-icons">person</i>
+        <md-tooltip md-visible="false" md-direction="left">
+          Edit your profile
+        </md-tooltip>
+      </md-button>
     </div>
   </div>
   <div id="jobSubhead" layout="row" layout-align="space-between" flex>
@@ -98,9 +103,9 @@
               <span ng-show="applied[job.id]" class="md-caption applied">Thanks for applying {{thankYouName}}!</span>
             </div>
             <div layout="row" layout-align="end center">
-                <md-button flex="90" ng-click="showJobDetails=!showJobDetails"><span ng-show="!showJobDetails">View more</span><span ng-show="showJobDetails">Show less</span>
+                <md-button aria-label="show less" flex="90" ng-click="showJobDetails=!showJobDetails"><span ng-show="!showJobDetails">View more</span><span ng-show="showJobDetails">Show less</span>
               </md-button>
-              <md-button flex="10" class="md-primary md-raised" ng-click="submitApplication(job.id)">Apply</md-button>
+              <md-button aria-label="Apply" flex="10" class="md-primary md-raised" ng-click="submitApplication(job.id)">Apply</md-button>
             </div>
           </md-card-actions>
         </md-card>

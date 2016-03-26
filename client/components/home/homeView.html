@@ -1,17 +1,42 @@
 <div layout="column">
   <div flex id="hero" layout="row" layout-align="center center">
     <div flex="40" layout="column" layout-align="center center">
+      <i flex class="material-icons md-48">business_center</i>
       <h3>Recruiters</h3>
       <md-button ui-sref="recruiters" class="md-raised md-primary">Go to your dashboard</md-button>
     </div>
     <div flex="40" layout="column" layout-align="center center">
-      <h3>Applicants</h3>
-      <md-button ui-sref="allJobs" class="md-raised md-primary">Search jobs</md-button>
+      <i ui-sref="allJobs" class="material-icons md-48">people_outline</i>
+      <h3 ui-sref="allJobs">Applicants</h3>
+      <md-button ui-sref="allJobs" class="md-raised md-primary">Search for jobs</md-button>
     </div>
   </div>
-  <div flex layout="column" layout-align="center center">
+  <div layout-padding flex layout="column" layout-align="center center">
     <div>
-      <h2>Remove the unconscious bias. Take your recruiting <em>EvenHigher</em>.</h2>
+      <h2>Remove the unconscious bias. Take your recruiting <em class="indigo">EvenHigher</em>.</h2>
+    </div>
+  </div>
+  <div id="about" flex layout="row" layout-xs="column" layout-align-xs="center center" layout-align="center start" layout-padding>
+    <div flex="25" flex-xs="90" layout="column" layout-align="center center" layout-padding>
+      <i class="material-icons md-48">business</i>
+      <h2 flex>Diversify your workforce</h2>
+      <div flex>
+        <span>EvenHire's web platform helps companies recruit diverse candidates in a more streamlined way</span>
+      </div>
+    </div>
+    <div flex="25" flex-xs="90" layout="column" layout-align="center center" layout-padding>
+      <i class="material-icons md-48">view_list</i>
+      <h2>Profile Tracking</h2>
+      <div flex>
+        <span>Review candidates based on their true merit, without the influence of subconscious cues such as gender or race</span>
+      </div>
+    </div>
+    <div flex="25" flex-xs="90" layout="column" layout-align="center center" layout-padding>
+      <i class="material-icons md-48">person</i>
+      <h2>Dynamic Updating</h2>
+      <div flex>
+        <span>Have new experience to add? Update your applicant profile to automatically update your submitted applications</span>
+      </div>
     </div>
   </div>
 </div>
