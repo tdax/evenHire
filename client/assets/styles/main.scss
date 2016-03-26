@@ -7,7 +7,8 @@ $redWarning: #E20505;
 $dialogColor: #fff;
 $indigo: rgb(63,81,181);
 
-body {
+html, body {
+  height: 100%;
   font-family: 'Roboto', 'Arial', 'sans-serif';
 }
 
@@ -84,10 +85,10 @@ md-toolbar {
 // Typography
 //===============================
 
-.material-icons.md-18 { font-size: 18px; };
-.material-icons.md-24 { font-size: 24px; };
-.material-icons.md-36 { font-size: 36px; };
-.material-icons.md-48 { font-size: 48px; };
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
 
 //===============================
 // HOME
@@ -96,6 +97,7 @@ md-toolbar {
 div#hero {
   color: #fff;
   background: linear-gradient(rgba(20,20,20, .80), rgba(20,20,20, .80)), url('/dist/imgs/evenhire_bckgrnd.jpg');
+  box-shadow: 0 0px 10px black;
   background-size: cover;
   height: 600px;
   i {
@@ -103,6 +105,7 @@ div#hero {
   }
   h3 {
     @extend i;
+    font-size: 32px;
   }
   a.md-button {
     span {
@@ -111,9 +114,12 @@ div#hero {
     }
   }
 }
+div#tagline {
+  text-align: center;
+}
 
 div#about {
-  margin-bottom: 75px;
+  margin-bottom: 30px;
   div {
     text-align: center;
   }
@@ -172,7 +178,7 @@ div#appModal {
 //JOB CARDS (IN VIEW ALL JOBS AND RECRUITER HOME)
 
 md-card {
-  box-shadow: 0 2px 3px 0 rgba(0,0,0,.2),0 1px 1px 0 rgba(0,0,0,.14),0 2px 1px -1px rgba(0,0,0,.12);
+  //box-shadow: 0 2px 3px 0 rgba(0,0,0,.2),0 1px 1px 0 rgba(0,0,0,.14),0 2px 1px -1px rgba(0,0,0,.12);
   overflow: hidden;
   border-radius: 8px;
   margin: 14px 8px;
@@ -360,11 +366,21 @@ div.authForm {
   }
 }
 
-div.loginbckgd {
+div#loginbckgd {
   color: #fff;
   background: linear-gradient(rgba(20,20,20, .55), rgba(20,20,20, .55)), url('/dist/imgs/networking-bckgrnd.jpg');
   background-size: cover;
-  min-height: 800px;
+  min-height: 700px;
+  div#quote {
+    margin-top: 5%;
+  }
+  div.marginTop {
+    margin-top: 3%;
+  }
+}
+
+div.newAcc {
+  background-color: black;
 }
 
 // AUTH CREATE AN ACCOUNT AS APPLICANT

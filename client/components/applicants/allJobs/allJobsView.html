@@ -1,7 +1,9 @@
 <div layout-padding id="appHome">
   <div layout="row" layout-align="space-between">
     <div layout="column" layout-align="start start">
-      <span class="md-headline">Job Postings</span>
+      <span class="md-headline">Welcome {{companyName.first_name}}</span>
+      <!-- <span>Hello {{companyName.first_name}}</span> -->
+      <!-- <span class="md-headline">Job Postings</span> -->
       <md-button aria-label="Post a job" ui-sref="recruiters" class="md-primary">Post a job</md-button>
     </div>
     <div flex="20" layout="row" layout-align="end start">
@@ -101,11 +103,12 @@
           <md-card-actions layout="column">
             <div flex="20" layout="row" layout-align="end center">
               <span ng-show="applied[job.id]" class="md-caption applied">Thanks for applying {{thankYouName}}!</span>
+              <span ng-show="alreadyApply[$index]"class="md-caption warn">You've already applied for that job</span>
             </div>
             <div layout="row" layout-align="end center">
                 <md-button aria-label="show less" flex="90" ng-click="showJobDetails=!showJobDetails"><span ng-show="!showJobDetails">View more</span><span ng-show="showJobDetails">Show less</span>
               </md-button>
-              <md-button aria-label="Apply" flex="10" class="md-primary md-raised" ng-click="submitApplication(job.id)">Apply</md-button>
+              <md-button aria-label="Apply" flex="10" class="md-primary md-raised" ng-click="submitApplication(job.id, $index)">Apply</md-button>
             </div>
           </md-card-actions>
         </md-card>

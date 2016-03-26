@@ -14,12 +14,12 @@
   <body id="body">
     <div layout="column">
       <md-toolbar>
-        <div class="md-toolbar-tools" layout-sm="column" layout-align="space-between">
+        <div class="md-toolbar-tools" layout-align="space-between">
           <div id="menuHome" ui-sref="home" layout="row" layout-align="start end">
             <img id="logo" src="./dist/imgs/logo-icon-white-resized.png">
             <h2>EvenHire</h2>
           </div>
-          <div layout="row" layout-align="end center">
+          <div layout="row" layout-xs="column" layout-align="end center">
             <div layout="row" layout-align="end center">
               <md-button ui-sref="recruiters">Find Talent</md-button>
             </div>
@@ -32,9 +32,7 @@
           </div>
         </div>
       </md-toolbar>
-      <md-content flex>
-        <div ui-view></div>
-      </md-content>
+      <div ui-view></div>
     </div>
   </body>
 </html>

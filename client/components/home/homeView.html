@@ -1,7 +1,7 @@
 <div layout="column">
-  <div flex id="hero" layout="row" layout-align="center center">
+  <div flex id="hero" layout-xs="column" layout="row" layout-align="center center">
     <div flex="40" layout="column" layout-align="center center">
-      <i flex class="material-icons md-48">business_center</i>
+      <i class="material-icons md-48">business_center</i>
       <h3>Recruiters</h3>
       <md-button ui-sref="recruiters" class="md-raised md-primary">Go to your dashboard</md-button>
     </div>
@@ -11,7 +11,7 @@
       <md-button ui-sref="allJobs" class="md-raised md-primary">Search for jobs</md-button>
     </div>
   </div>
-  <div layout-padding flex layout="column" layout-align="center center">
+  <div id="tagline" layout-padding flex layout="column" layout-align="center center">
     <div>
       <h2>Remove the unconscious bias. Take your recruiting <em class="indigo">EvenHigher</em>.</h2>
     </div>
@@ -38,5 +38,8 @@
         <span>Have new experience to add? Update your applicant profile to automatically update your submitted applications</span>
       </div>
     </div>
+  </div>
+  <div layout="column" layout-align="center end" layout-margin>
+    <span flex class="md-caption">&copy; EvenHire 2016</span>
   </div>
 </div>

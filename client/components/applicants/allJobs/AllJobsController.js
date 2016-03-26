@@ -2,6 +2,9 @@
 angular.module('evenhire.allJobs', [])
 
   .controller('AllJobsController', ['$scope', '$state', 'Applicant', 'ngDialog', 'Auth', 'Home', function($scope, $state, Applicant, ngDialog, Auth, Home) {
+    Auth.fetchUserFromJwt(function(user) {
+      $scope.companyName = user;
+    });
     $scope.fetchedJobs = [];
     // Options for filling out forms
     $scope.cities = Home.cities;
@@ -22,6 +25,7 @@ angular.module('evenhire.allJobs', [])
     $scope.industryFilter = [];
 
     $scope.applied = {};
+    $scope.alreadyApply = {};
 
     $scope.clearAll = function() {
       $scope.cityFilter = [];
@@ -32,16 +36,6 @@ angular.module('evenhire.allJobs', [])
 
     $scope.closeDialog = function() {
       ngDialog.close();
-    };
-
-    $scope.duplicateApplication = function() {
-      ngDialog.open({
-        template: './components/applicants/allJobs/duplicateApplication.tmpl.html',
-        controller: 'AllJobsController',
-        className: 'ngdialog-theme-default',
-        closeByDocument: true,
-        scope: $scope
-      });
     };
 
     $scope.exists = function(item, list) {
@@ -64,7 +58,6 @@ angular.module('evenhire.allJobs', [])
         scope: $scope
       });
     };
-
     $scope.currentUserType = Auth.getCurrentUserType();
     $scope.saveUpdate = function(loggedInUser, userType) {
       Auth.userUpdate(loggedInUser, userType)
@@ -74,7 +67,7 @@ angular.module('evenhire.allJobs', [])
       });
     };
 
-    $scope.submitApplication = function(job_id) {
+    $scope.submitApplication = function(job_id, index) {
       if (Auth.getCurrentUserType() !== 'applicant') {
         $scope.onlyApplicantCanApply();
         $state.go('appLogin');
@@ -83,7 +76,8 @@ angular.module('evenhire.allJobs', [])
           .then(function(factoryResponse) {
             console.log("factoryResponse in alljobsController", factoryResponse);
             if(factoryResponse.toString() === 'false') {
-              $scope.duplicateApplication();
+              $scope.alreadyApply[index] = true;
+              $scope.applied[job_id] = false;
             } else {
               $scope.thankYouName = factoryResponse.first_name;
               $scope.applied[job_id] = true;

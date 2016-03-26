@@ -10,7 +10,7 @@ angular.module('evenhire.auth.factory', [])
         return !!window.localStorage.getItem('evenhire');
       };
 
-      auth.fetchUserFromJwt = function() {
+      auth.fetchUserFromJwt = function(cb) {
         if (auth.isAuth()) {
         var jwtObj = {jwt: auth.getJwt()};
           return $http({
@@ -22,6 +22,9 @@ angular.module('evenhire.auth.factory', [])
             var userType = data.data.userType;
             var userObject = data.data.user;
             auth.setUser(userObject, userType);
+            if (cb) {
+              cb(data.data.user);
+            }
           }, function(err) {
             console.log('error in fetching jwt in auth-factory.js', err);
             return err;
