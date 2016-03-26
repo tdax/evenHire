@@ -1,25 +1,48 @@
-<div class="loginbckgd" layout="row" layout-padding layout-align="end start">
-  <div class="authForm" flex="75" flex-gt-xs="35" flex-sm="50">
-    <h2 class="md-headline">Applicants Login</h2>
-    <form>
-      <div layout="column">
-        <md-input-container flex>
-          <label>Username</label>
-          <input type="text" ng-model="user.username" required/>
-        </md-input-container>
-        <md-input-container class="topSpacing" flex>
-          <label>Password</label>
-          <input type="password" ng-model="user.password" required/>
-          <span class="warn">{{message}}</span>
-        </md-input-container>
-        <div layout="row">
-          <div flex layout="column">
-            <span class="md-caption subtext">Don't have an Evenhire applicant account? <a ui-sref="appNewAcc">Sign up</a><br>
-            <a href="" ng-click="forgotPassword()">Forgot your password?</a></span>
-          </div>
-          <md-button class="md-raised md-primary bold" type="submit" ng-click="logIn()">Submit</md-button>
+<div layout="column" class="loginbckgd">
+  <div layout="row" class="marginTop" layout-padding layout-align="end start">
+    <div flex="60" layout="column" layout-align="end center">
+      <div flex class="marginTop" layout="column" layout-align="start start">
+        <div flex layout="row" layout-align="center center">
+          <i class="material-icons marginRight md-36">mode_edit</i>
+          <h3>Update already-sent applications with updated resume</h3>
+        </div>
+        <div flex layout="row" layout-align="center center">
+          <i class="material-icons marginRight md-36">radio_button_checked</i>
+          <h3>Apply for jobs at the touch of a button</h3>
+        </div>
+        <div flex layout="row" layout-align="center center">
+          <i class="material-icons marginRight md-36">account_circle</i>
+          <h3>Have confidence in your anonymity as a candidate</h3>
         </div>
       </div>
-    </form>
+    </div>
+    <div class="authForm" flex="75" flex-gt-xs="35" flex-sm="50">
+      <h2 class="md-headline">Applicants Login</h2>
+      <form>
+        <div layout="column">
+          <md-input-container flex>
+            <label>Username</label>
+            <input type="text" ng-model="user.username" required/>
+          </md-input-container>
+          <md-input-container class="topSpacing" flex>
+            <label>Password</label>
+            <input type="password" ng-model="user.password" required/>
+            <span class="warn">{{message}}</span>
+          </md-input-container>
+          <div layout="row">
+            <div flex layout="column">
+              <span class="md-caption subtext">Don't have an Evenhire applicant account? <a ui-sref="appNewAcc">Sign up</a><br>
+              <a href="" ng-click="forgotPassword()">Forgot your password?</a></span>
+            </div>
+            <md-button class="md-raised md-primary bold" type="submit" ng-click="logIn()">Submit</md-button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div id="quote" flex layout="row" layout-align="center start">
+    <i class="material-icons md-48">format_quote</i>
+    <h2>Be considered by your merit, not your name</h2>
+    <i class="material-icons md-48">format_quote</i>
   </div>
 </div>

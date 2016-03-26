@@ -56,6 +56,10 @@ button.bold {
   color: $indigo;
 }
 
+.curved {
+  border-radius: 12px;
+}
+
 //==============================-
 //MAIN HEADER
 //===============================
@@ -99,7 +103,7 @@ div#hero {
   background: linear-gradient(rgba(20,20,20, .80), rgba(20,20,20, .80)), url('/dist/imgs/evenhire_bckgrnd.jpg');
   box-shadow: 0 0px 10px black;
   background-size: cover;
-  height: 600px;
+  height: 550px;
   i {
     cursor: pointer;
   }
@@ -366,7 +370,7 @@ div.authForm {
   }
 }
 
-div#loginbckgd {
+div.loginbckgd {
   color: #fff;
   background: linear-gradient(rgba(20,20,20, .55), rgba(20,20,20, .55)), url('/dist/imgs/networking-bckgrnd.jpg');
   background-size: cover;
@@ -380,7 +384,8 @@ div#loginbckgd {
 }
 
 div.newAcc {
-  background-color: black;
+  background-color: $grey-background;
+  min-height: 800px;
 }
 
 // AUTH CREATE AN ACCOUNT AS APPLICANT
@@ -397,4 +402,3 @@ div#ngdialog1.ngdialog.ngdialog-theme-default, div#ngdialog2.ngdialog.ngdialog-t
   min-width: 50%;
   }
 }
-

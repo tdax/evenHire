@@ -1,16 +1,18 @@
-<div layout="row" layout-align="center center">
-  <div flex="50" layout="column">
+<div class="newAcc" layout="row" layout-align="center start">
+  <div flex="50" layout-padding>
     <h2 class="md-headline">Create your applicant profile</h2>
-    <form name="appNewAccountForm" class="signupForm" id="appNewAccountForm">
-      <md-content layout="row">
-        <md-input-container flex="50">
-          <label>First Name</label>
-          <input type="text" name="firstName" ng-model="applicant.firstName" required>
-        </md-input-container>
-        <md-input-container flex="50">
-          <label>Last Name</label>
-          <input type="text" name="lastName" ng-model="applicant.lastName" required>
-        </md-input-container>
+      <md-content class="curved">
+        <form name="appNewAccountForm" class="signupForm" id="appNewAccountForm">
+        <div layout="row">
+          <md-input-container flex="50">
+            <label>First Name</label>
+            <input type="text" name="firstName" ng-model="applicant.firstName" required>
+          </md-input-container>
+          <md-input-container flex="50">
+            <label>Last Name</label>
+            <input type="text" name="lastName" ng-model="applicant.lastName" required>
+          </md-input-container>
+        </div>
       </md-content>
       <div layout="row" flex>
         <md-input-container flex="45">
