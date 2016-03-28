@@ -5,7 +5,7 @@ EvenHire is a responsive web application that removes the unconscious bias from 
 #####[Visit the app](http://evenhire.herokuapp.com/#/)
 
 ## Tech Stack
-![Tech Stack](/client/assets/imgs/evenhire_techstack.jpeg)
+![Tech Stack](/client/assets/imgs/techstack.jpeg)
 
 ## Architecture
 ![Architecture](/client/assets/imgs/EvenHire-architecture.jpeg)

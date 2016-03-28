@@ -17,21 +17,61 @@ before(function(done) {
 });
 
 describe('Routes', function() {
+
   describe('General routes', function() {
+
     it('GET / should return html and 200', function(done) {
       request(app)
         .get('/')
         .expect('Content-Type', 'text/html; charset=UTF-8')
         .expect(200, done);
     });
+
   });
+
 });
+//------------------------------
 describe('Recruiters', function() {
-  it('GET /api/recruiter/showJobsAppsDB should return 200', function(done) {
-    request(app)
-      .get('/api/recruiter/showJobsAppsDB')
-      .expect(200, done());
+
+  describe('GET of all jobs', function() {
+
+    it('GET /api/recruiter/allPostedJobs should return 200', function(done) {
+      request(app)
+        .get('/api/recruiter/allPostedJobs')
+        .expect(200, done());
+    });
+
   });
+
+  describe('GET of relationship between Jobs and Applicants', function() {
+
+    it('GET /api/recruiter/showJobsAppsDB should return 200', function(done) {
+      request(app)
+        .get('/api/recruiter/showJobsAppsDB')
+        .expect(200, done());
+    });
+
+  });
+
+  describe('get list of Applicants for job', function() {
+
+    it('POST /api/recruiter/getApplicants should return applicants', function(done){
+      var dataApp = {
+        jobId: 1
+      };
+      request(app)
+        .post('/api/recruiter/getApplicants')
+        .send(dataApp)
+        .expect(200)
+        .end(function(err, res) {
+          expect(res.body).to.be.an('object');
+          expect(res.body).to.include.keys('results');
+          done();
+        });
+    });
+
+  });
+
   it('POST /api/recruiter/signup should return an object with data and type', function(done) {
     var data = {
       username: 'test',
@@ -53,6 +93,7 @@ describe('Recruiters', function() {
         done();
       });
   });
+
   describe('Login POST to /api/recruiter/login', function() {
     it('should return an error for a nonexistent user', function(done) {
       var user = {
@@ -69,6 +110,7 @@ describe('Recruiters', function() {
           done();
         });
     });
+
     it('should return an error with a wrong password', function(done) {
       var data = {
         username: 'test',
@@ -106,7 +148,7 @@ describe('Recruiters', function() {
     });
   });
 });
-
+//------------------------------
 describe('Jobs', function(done) {
   describe('Posting a job POST /api/recruiter/newJob', function() {
     var job = {
@@ -169,7 +211,7 @@ describe('Jobs', function(done) {
       });
   });
 });
-
+//------------------------------
 describe('Applicants', function() {
   describe('Signing up POST /api/applicant/signup', function() {
     it('should return an object with type and data', function(done) {
