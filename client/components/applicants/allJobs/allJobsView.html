@@ -75,7 +75,7 @@
       </div>
     </div>
     <div id="jobPostings" flex>
-      <div flex class="jobCard" ng-repeat="job in fetchedJobs | orderBy:'-createdAt' | filter:searchText | sidebar:jobTypeFilter | sidebar:cityFilter | sidebar:levelFilter">
+      <div flex class="jobCard" ng-repeat="job in fetchedJobs | orderBy:'-createdAt' | filter:searchText | sidebar:jobTypeFilter | sidebar:cityFilter | sidebar:levelFilter | sidebar:industryFilter">
         <md-card>
           <md-card-title>
             <md-card-title-text>
