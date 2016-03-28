@@ -119,7 +119,6 @@ module.exports = {
           first_name: req.body.first_name,
           last_name: req.body.last_name,
           username: req.body.username,
-          password: req.body.password,
           email: req.body.email,
           city: req.body.city,
           work_exp: req.body.work_exp,
