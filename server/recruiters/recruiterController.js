@@ -166,7 +166,6 @@ module.exports = {
     mailgun.messages().send(email, function(error, body) {
       res.send(body);
     });
-    res.send("recruiterController on server side sent email")
   },
 
   signup: function(req, res) {
