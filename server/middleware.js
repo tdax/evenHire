@@ -3,12 +3,11 @@ module.exports = function(app, express) {
   var recruitersRouter = express.Router();
   var authRouter = express.Router();
 
+  app.use('/api/auth', authRouter);
   app.use('/api/applicant', applicantsRouter);
   app.use('/api/recruiter', recruitersRouter);
-  app.use('/api/auth', authRouter);
 
   require('./auth/authController.js')(authRouter);
   require('./applicants/applicantRoutes.js')(applicantsRouter);
   require('./recruiters/recruiterRoutes.js')(recruitersRouter);
-
 }

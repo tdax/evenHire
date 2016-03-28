@@ -6,6 +6,24 @@ var Models = require('../db/models')(db);
 var authUtils = require('../auth/utils');
 
 module.exports = {
+  contacted: function(req, res) {
+    var job = req.body.jobId;
+    var applicant = req.body.applicantIdNum;
+    var contacted = req.body.contacted;
+    Models.JobApplicant.findOne({where: {applicantId: applicant, jobId: job}})
+      .then(function(found) {
+        found.update({
+          contacted: contacted
+        })
+        .then(function(inserted) {
+          res.status(200).send(inserted);
+        });
+      })
+      .catch(function(err) {
+        return res.status(400).send(err);
+      });
+  },
+
   getAllJobs: function(req, res) {
     var decoded = authUtils.decodeToken(req.headers['x-access-token']);
     var requestorId = decoded.id;
@@ -65,6 +83,24 @@ module.exports = {
       .catch(function(err) {
         return res.send(err);
       });
+  },
+
+  isInterested: function(req, res) {
+    var job = req.body.jobId;
+    var applicant = req.body.applicantIdNum;
+    var interested = req.body.isInterested;
+    Models.JobApplicant.findOne({where: {applicantId: applicant, jobId: job}})
+      .then(function(found) {
+        found.update({
+          isInterested: interested
+        })
+        .then(function(inserted) {
+          res.status(200).send(inserted);
+        });
+      })
+      .catch(function(err) {
+        return res.status(400).send(err);
+      })
   },
 
   login: function(req, res) {
@@ -127,10 +163,9 @@ module.exports = {
       subject: req.body.jobTitle + ' position for ' + req.body.company,
       text: req.body.message
     };
-    // mailgun.messages().send(email, function(error, body) {
-    //   console.log('resonse from mail gun is, ', body);
-    //   res.send(body);
-    // });
+    mailgun.messages().send(email, function(error, body) {
+      res.send(body);
+    });
     res.send("recruiterController on server side sent email")
   },
 
@@ -164,44 +199,6 @@ module.exports = {
             });
           });
       });
-  },
-
-  isInterested: function(req, res) {
-    var job = req.body.jobId;
-    var applicant = req.body.applicantIdNum;
-    var interested = req.body.isInterested;
-    Models.JobApplicant.findOne({where: {applicantId: applicant, jobId: job}})
-      .then(function(found) {
-        found.update({
-          isInterested: interested
-        })
-        .then(function(inserted) {
-          res.status(200).send(inserted);
-        });
-      })
-      .catch(function(err) {
-        return res.status().send(err);
-      })
-  },
-
-  contacted: function(req, res) {
-    var job = req.body.jobId;
-    var applicant = req.body.applicantIdNum;
-    var contacted = req.body.contacted;
-    Models.JobApplicant.findOne({where: {applicantId: applicant, jobId: job}})
-      .then(function(found) {
-        found.update({
-          contacted: contacted
-        })
-        .then(function(inserted) {
-          res.status(200).send(inserted);
-        });
-      })
-      .catch(function(err) {
-        return res.status(400).send(err);
-      })
   }
 
 };
-
-// [Sequelize.fn(Sequelize.col('results.dataValues.applicantId'))]

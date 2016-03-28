@@ -1,4 +1,4 @@
-![EvenHire](/client/assets/imgs/logo-icon-color-small.png)# EvenHire ![](https://travis-ci.org/tdax/evenHire.svg?branch=master)
+# EvenHire ![](https://travis-ci.org/tdax/evenHire.svg?branch=master)
 
 EvenHire is a responsive web application that removes the unconscious bias from the hiring process by hiding data that might reveal gender or ethnicity, allowing recruiters to diversify their workforce. EvenHire was concieved and by a team of four full-stack software engineers: [Alice Kao](https://github.com/alicekao), [Darko Gjorgoski](https://github.com/darko7), [Thomas Sorensen](https://github.com/tps-80), and [Xavier Hayeck](https://github.com/xhayeck)
 
@@ -6,6 +6,9 @@ EvenHire is a responsive web application that removes the unconscious bias from 
 
 ## Tech Stack
 ![Tech Stack](/client/assets/imgs/evenhire_techstack.jpeg)
+
+## Architecture
+![Architecture](/client/assets/imgs/EvenHire-architecture.jpeg)
 
 ## Features
 - General Features
@@ -32,9 +35,9 @@ EvenHire is a responsive web application that removes the unconscious bias from 
 
 ## Setup
 During development we have the server running on localhost port 8000, but before running locally, be sure to run:
-- 'npm install' to install our dependencies
-- 'npm install gulp -g' to make sure gulp is installed
-- 'gulp start' to build the dist/ folder, start the server with nodemon, and to watch files for changes
+- `npm install` to install our dependencies
+- `npm install gulp -g` to make sure gulp is installed
+- `gulp start` to build the dist/ folder, start the server with nodemon, and to watch files for changes
 
 We used the [dotenv](https://github.com/bkeepers/dotenv) npm package to configure our development variables. Create a .env file in the root directory with the following variables and their values:
 - DATABASE_URL

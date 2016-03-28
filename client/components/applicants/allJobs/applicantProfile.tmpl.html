@@ -46,11 +46,12 @@
         </md-input-container>
         <md-input-container>
           <label>Work Experience</label>
-          <textarea rows="2" ng-model="loggedInUser.work_exp" required></textarea>
+          <textarea ng-model="loggedInUser.work_exp" required></textarea>
         </md-input-container>
         <md-input-container>
           <label>Skills and Other Experiences</label>
-          <textarea rows="3" type="text" ng-model="loggedInUser.resume" required></textarea>
+          <textarea type="text" ng-model="loggedInUser.resume" required></textarea>
+          <span ng-show="resumeCheck" class="warn">You should not put your name in your resume</span>
         </md-input-container>
       </div>
       <div layout="row" layout-align="end center">

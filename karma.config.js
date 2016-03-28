@@ -15,6 +15,7 @@ module.exports = function(config) {
             'node_modules/angular-mocks/angular-mocks.js',
             'node_modules/sinon-chai/lib/sinon-chai.js',
             'node_modules/sinon/pkg/sinon.js',
+            'node_modules/angular-scroll/angular-scroll.min.js',
 
             //client files with tests in each folder respectively
             'client/app.js',
