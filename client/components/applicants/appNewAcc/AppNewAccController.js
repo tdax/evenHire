@@ -7,7 +7,7 @@ angular.module('evenhire.appNewAcc', [])
     $scope.resumeCheck = false;
 
     $scope.createAccount = function() {
-      if ($scope.applicant.resume.match($scope.applicant.firstName) || $scope.applicant.resume.match($scope.applicant.lastName)) {
+      if ($scope.applicant.resume.toLowerCase().match($scope.applicant.firstName.toLowerCase()) || $scope.applicant.resume.toLowerCase().match($scope.applicant.lastName.toLowerCase())) {
       $scope.resumeCheck = true;
       } else {
         Auth.signUp($scope.applicant, 'applicant')

@@ -20,7 +20,7 @@ angular.module('evenhire.allJobs', [])
     $scope.jobTypeDropdownShown = true;
     $scope.careerLevelDropdownShown = true;
     $scope.industryDropdownShown = true;
-
+    $scope.checkForName = false;
     // These arrays will be populated wtih which boxes are checked in the sidebar filter
     $scope.jobTypeFilter = [];
     $scope.cityFilter = [];
@@ -64,8 +64,8 @@ angular.module('evenhire.allJobs', [])
     };
 
     $scope.saveUpdate = function(loggedInUser, userType) {
-      if ($scope.loggedInUser.resume.match($scope.loggedInUser.first_name) || $scope.loggedInUser.resume.match($scope.loggedInUser.last_name)) {
-        $scope.resumeCheck = true;
+      if($scope.loggedInUser.resume.toLowerCase().match($scope.loggedInUser.first_name.toLowerCase()) || $scope.loggedInUser.resume.toLowerCase().match($scope.loggedInUser.last_name.toLowerCase())) {
+        $scope.checkForName = true;
       } else {
         Auth.userUpdate(loggedInUser, userType)
         .then(function(data) {

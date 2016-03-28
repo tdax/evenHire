@@ -17,13 +17,6 @@ angular.module('evenhire.recNewAcc', [])
         });
     };
 
-
-    // This function is used in conjunction with test example
-    // $scope.sum = function() {
-    //   $scope.z = $scope.x + $scope.y;
-    // };
-
-
   }])
   //directive to check that the password fields have the same value
   .directive('valueMatches', ['$parse', function ($parse) {

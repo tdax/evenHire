@@ -4,7 +4,9 @@ describe('RecNewAccController', function(){
   var httpBackend;
   var $state;
   var Recruiter;
-  var $controller
+  var $controller;
+  var $window;
+  var Auth;
 
   //load module
   beforeEach(module('evenhire'));
@@ -16,12 +18,16 @@ describe('RecNewAccController', function(){
     Recruiter = $injector.get('Recruiter');
     $controller = $injector.get('$controller');
     $scope = $rootScope.$new();
+    $window = $injector.get('$window');
+    Auth = $injector.get('Auth');
 
     createController = function() {
       return $controller('RecNewAccController', {
         $scope: $scope,
         $state: $state,
-        Recruiter: Recruiter
+        Recruiter: Recruiter,
+        Auth: Auth,
+        $window: $window
       });
     };
 
